@@ -9,13 +9,31 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
-"class": "dice",
+"base": "DiceSignaler",
+"class": "Dice",
 "language": "GDScript",
 "path": "res://assets/scripts/dice.gd"
+}, {
+"base": "Node",
+"class": "DiceContainer",
+"language": "GDScript",
+"path": "res://assets/scripts/generics/dice_container.gd"
+}, {
+"base": "Node",
+"class": "DicePower",
+"language": "GDScript",
+"path": "res://assets/scripts/generics/dice_power.gd"
+}, {
+"base": "Node",
+"class": "DiceSignaler",
+"language": "GDScript",
+"path": "res://assets/scripts/generics/dice_signalers.gd"
 } ]
 _global_script_class_icons={
-"dice": ""
+"Dice": "",
+"DiceContainer": "",
+"DicePower": "",
+"DiceSignaler": ""
 }
 
 [application]

@@ -1,33 +1,30 @@
-extends Node
+extends DiceSignaler
 #this class represents the dice in the game
 #and controls signal emission and movement
 #of random dice roll data
 
-class_name dice
+class_name Dice
+
 
 #how high this dice can roll
 export var dice_type : int = 6
 
 
-#this is a buffer to store our random roll before returning
-#we store it here so others can modify it before return
-var roll_buffer : int
+func get_roller()->Node:
+	return get_parent()
+
+func _init(type : int)->void:
+	dice_type = type
 
 #returns a number from 1 to the dice type
 func generate_random_roll()->int:
 	return (randi() % dice_type) + 1
-
+	
 func roll()->int:
 	roll_buffer = generate_random_roll()
 	
-	for node in get_tree().get_nodes_in_group("super_dice_changers"):
-		node.recive_dice(self)
-	
-	for node in get_tree().get_nodes_in_group("dice_recivers"):
-		node.recive_dice(self)
-	
-	for node in get_tree().get_nodes_in_group("dice_changers"):
-		node.recive_dice(self)
+	#tell everyone about the roll
+	emit_self()
 	
 	#return the value of the roll
 	return roll_buffer
