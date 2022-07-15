@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/scripts/dice/Physics d6.gd" type="Script" id=1]
+[ext_resource path="res://assets/materials/Dice Material.tres" type="Material" id=2]
+[ext_resource path="res://assets/models/dice/d6 lez go.glb" type="PackedScene" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.75, 0.75, 0.75 )
+
+[node name="Physics d6" type="RigidBody"]
+script = ExtResource( 1 )
+
+[node name="d6 lez go" parent="." instance=ExtResource( 3 )]
+
+[node name="d6" parent="d6 lez go" index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[editable path="d6 lez go"]

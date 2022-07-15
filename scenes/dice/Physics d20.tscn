@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/dice/d20 collision.tres" type="Shape" id=1]
+[ext_resource path="res://assets/models/dice/d20 yeah bois.glb" type="PackedScene" id=2]
+[ext_resource path="res://assets/scripts/dice/Physics d20.gd" type="Script" id=3]
+[ext_resource path="res://assets/materials/Dice Material.tres" type="Material" id=4]
+
+[node name="Physics d20" type="RigidBody"]
+script = ExtResource( 3 )
+
+[node name="d20 yeah bois" parent="." instance=ExtResource( 2 )]
+
+[node name="d20" parent="d20 yeah bois" index="0"]
+material/0 = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = ExtResource( 1 )
+
+[editable path="d20 yeah bois"]
