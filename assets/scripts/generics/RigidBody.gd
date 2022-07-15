@@ -1,4 +1,4 @@
-extends RigidBody
+extends KinematicBody
 
 class_name Entity
 

@@ -6,8 +6,5 @@
 [node name="test_lazer" type="Spatial"]
 script = ExtResource( 2 )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4462 )
-
 [node name="lazer" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128172, 0.0390325, -0.0234937 )

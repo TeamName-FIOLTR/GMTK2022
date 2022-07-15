@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scripts/generics/dice_signalers.gd"
 }, {
-"base": "RigidBody",
+"base": "KinematicBody",
 "class": "Entity",
 "language": "GDScript",
 "path": "res://assets/scripts/generics/RigidBody.gd"
