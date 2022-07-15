@@ -9,6 +9,12 @@ class_name DiceContainer
 func dice_count()->int:
 	return len(get_children())
 
+func get_dice_total_sum()->int:
+	var ret_val : int = 0
+	for dice in get_children():
+		ret_val += dice.dice_type
+	return ret_val
+
 func roll()->int:
 	var ret_val : int = 0
 	for node in get_children():

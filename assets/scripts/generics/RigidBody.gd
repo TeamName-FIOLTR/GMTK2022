@@ -1,5 +1,7 @@
 extends RigidBody
 
+class_name Entity
+
 export var dice_container_path : NodePath
 onready var dice_container : Node = get_node(dice_container_path)
 

@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/scripts/generics/dice_container.gd" type="Script" id=2]
+[ext_resource path="res://scenes/ray_cast_lazer.tscn" type="PackedScene" id=3]
 
 [sub_resource type="PrismMesh" id=1]
 
@@ -14,6 +16,7 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource( 1 )
+dice_container_path = NodePath("DiceContainer")
 
 [node name="CSGMesh" type="CSGMesh" parent="."]
 transform = Transform( -4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0, 0, 0 )
@@ -22,3 +25,10 @@ material = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 3 )
+
+[node name="DiceContainer" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="lazer" parent="." instance=ExtResource( 3 )]
+transform = Transform( 9.368, 0, 0, 0, 1, 0, 0, 0, 1, 1.06746, 0, 0 )
+length = 9.368

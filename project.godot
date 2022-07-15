@@ -28,12 +28,24 @@ _global_script_classes=[ {
 "class": "DiceSignaler",
 "language": "GDScript",
 "path": "res://assets/scripts/generics/dice_signalers.gd"
+}, {
+"base": "RigidBody",
+"class": "Entity",
+"language": "GDScript",
+"path": "res://assets/scripts/generics/RigidBody.gd"
+}, {
+"base": "Spatial",
+"class": "Lazer",
+"language": "GDScript",
+"path": "res://assets/scripts/lazer/lazer.gd"
 } ]
 _global_script_class_icons={
 "Dice": "",
 "DiceContainer": "",
 "DicePower": "",
-"DiceSignaler": ""
+"DiceSignaler": "",
+"Entity": "",
+"Lazer": ""
 }
 
 [application]

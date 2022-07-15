@@ -1,4 +1,4 @@
-extends RigidBody
+extends Entity
 
 
 export(Vector2) var movement_vector
