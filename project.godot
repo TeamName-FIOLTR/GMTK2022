@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "dice",
+"language": "GDScript",
+"path": "res://assets/scripts/dice.gd"
+} ]
+_global_script_class_icons={
+"dice": ""
+}
+
 [application]
 
 config/name="GMTK2022"
