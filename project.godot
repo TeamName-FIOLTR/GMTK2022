@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Spatial",
+"class": "BootstrapPlayer",
+"language": "GDScript",
+"path": "res://assets/scripts/PlayerBootstrap.gd"
+}, {
 "base": "DicePower",
 "class": "DebugDicePower",
 "language": "GDScript",
@@ -69,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scripts/dice_powers/dice_duplicate_low.gd"
 }, {
+"base": "Spatial",
+"class": "ObjectSpawner",
+"language": "GDScript",
+"path": "res://assets/scripts/untils/object_spawner.gd"
+}, {
 "base": "RigidBody",
 "class": "PhysicsDice",
 "language": "GDScript",
@@ -85,6 +95,7 @@ _global_script_classes=[ {
 "path": "res://assets/scripts/generics/power pickup.gd"
 } ]
 _global_script_class_icons={
+"BootstrapPlayer": "",
 "DebugDicePower": "",
 "Dice": "",
 "DiceContainer": "",
@@ -97,6 +108,7 @@ _global_script_class_icons={
 "Lazer": "",
 "MaxDuplicateDicePower": "",
 "MinDuplicationDicePower": "",
+"ObjectSpawner": "",
 "PhysicsDice": "",
 "Player": "",
 "PowerPickup": ""
