@@ -64,3 +64,8 @@ enabled = true
 script = ExtResource( 9 )
 objects = [ ExtResource( 8 ) ]
 radius = 20.0
+
+[node name="enemy_spawn_timer" type="Timer" parent="Player/ObjectSpawner"]
+autostart = true
+
+[connection signal="timeout" from="Player/ObjectSpawner/enemy_spawn_timer" to="Player/ObjectSpawner" method="_on_enemy_spawn_timer_timeout"]

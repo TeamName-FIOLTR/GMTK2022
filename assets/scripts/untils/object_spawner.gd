@@ -24,3 +24,7 @@ func spawn_object()->void:
 	
 	if inst is Spatial:
 		inst.global_transform.origin = global_transform*transform*local_position
+
+
+func _on_enemy_spawn_timer_timeout():
+	spawn_object()
