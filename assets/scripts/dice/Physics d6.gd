@@ -16,7 +16,6 @@ func _ready():
 					Vector3(1.0, 0.0, 0.0),
 					Vector3(0.0, 1.0, 0.0),
 					]
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

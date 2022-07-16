@@ -29,6 +29,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scripts/generics/dice_signalers.gd"
 }, {
+"base": "Spatial",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://assets/scripts/generics/enemies.gd"
+}, {
+"base": "Enemy",
+"class": "EnemyHWalker",
+"language": "GDScript",
+"path": "res://assets/scripts/enemies/HWalker.gd"
+}, {
 "base": "KinematicBody",
 "class": "Entity",
 "language": "GDScript",
@@ -54,6 +64,8 @@ _global_script_class_icons={
 "DiceContainer": "",
 "DicePower": "",
 "DiceSignaler": "",
+"Enemy": "",
+"EnemyHWalker": "",
 "Entity": "",
 "Gun": "",
 "Lazer": "",
@@ -65,6 +77,10 @@ _global_script_class_icons={
 config/name="GMTK2022"
 run/main_scene="res://scene/levels/Test Level.tscn"
 config/icon="res://icon.png"
+
+[global]
+
+damp=false
 
 [input]
 
@@ -132,6 +148,8 @@ fire={
 [physics]
 
 common/enable_pause_aware_picking=true
+3d/default_linear_damp=0.0
+3d/default_angular_damp=0.0
 
 [rendering]
 

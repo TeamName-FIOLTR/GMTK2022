@@ -3,6 +3,16 @@ extends Spatial
 
 class_name Gun
 
+
+export(NodePath) var raycast_path : NodePath
+onready var raycast : RayCast = get_node(raycast_path)
+
+export(NodePath) var container_path : NodePath
+var container
+
+func get_collider()->Object:
+	return raycast.get_collider()
+
 var cool_down_time : float = 1.0 setget set_cool_down_time, get_cool_down_time
 func set_cool_down_time(val : float)->void:
 	cool_down_time = val
@@ -14,15 +24,22 @@ var fire_range : float = 1.0
 
 func _ready():
 	$cool_down.wait_time = cool_down_time
+	
+	if container_path:
+		container = get_node(container_path)
+	else:
+		container = get_parent()
 
 #alerts the parent of a collision
 func alert_hit(col):
-	get_parent().hit_target(col)
+	container.hit_target(col)
 
 #called when we want to shoot, inteanded to be
 #overloaded by the child class
 func fire():
-	pass
+	var col = get_collider()
+	if col:
+		container.hit_target(col)
 
 #turns on sights for aiming
 func aim():
@@ -34,10 +51,15 @@ func input_fire():
 		fire()
 		$cool_down.start()
 
-func _input(event):
-	if Input.is_action_pressed("fire"):
+var do_fire : bool = false
+var do_aim : bool = false
+
+export(bool) var player_controled : bool = false
+
+func _process(delta):
+	if do_fire or (player_controled and Input.is_action_pressed("fire")):
 		input_fire()
-	elif Input.is_action_pressed("aim"):
+	elif do_aim or (player_controled and Input.is_action_pressed("aim")):
 		aim()
 	else:
 		self.visible = false

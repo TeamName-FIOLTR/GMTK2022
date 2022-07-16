@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/scripts/generics/dice_container.gd" type="Script" id=1]
+[ext_resource path="res://assets/scripts/generics/RigidBody.gd" type="Script" id=2]
+
+[node name="RigidBody" type="KinematicBody"]
+script = ExtResource( 2 )
+dice_container_path = NodePath("dice")
+
+[node name="dice" type="Node" parent="."]
+script = ExtResource( 1 )

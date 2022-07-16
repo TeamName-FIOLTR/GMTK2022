@@ -40,7 +40,6 @@ func _physics_process(delta):
 #			print("I'M DONE")
 		dice_signaler.roll_buffer = get_rolled_face()
 		dice_signaler.emit_self()
-		pass
 	elif rolled and !lock_roll:
 		if linear_velocity.length() >= linear_velocity_threashold or angular_velocity.length() >= angular_velocity_threashold:
 			rolled = false
@@ -62,6 +61,14 @@ func get_rolled_face():
 	if len(face_numbers) == 0:
 		max_idx += 1
 	return max_idx
+
+#snaps the dice to the nearest roll and stops all rolling
+func snap_normal()->void:
+	rotation
+	linear_velocity = Vector3(0,0,0)
+	angular_velocity = Vector3(0,0,0)
+	look_at(global_transform*Vector3(1,0,0),Vector3(0,1,0))
+
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):

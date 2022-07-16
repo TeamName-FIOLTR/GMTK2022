@@ -10,10 +10,13 @@ var flicker_shader = load("res://assets/shaders/lazer_flicker.gdshader")
 func play(name : String = "", custom_blend : float = -1, custom_speed: float = 1.0, from_end: bool = false)->void:
 	match name:
 		"pew pew fire":
-			mesh.mesh.material.shader = pew_pew_shader
+			if mesh.mesh.material.shader != pew_pew_shader:
+				mesh.mesh.material.shader = pew_pew_shader
 			
 		"fire_main":
-			mesh.mesh.material.shader = rail_shader
+			if mesh.mesh.material.shader != rail_shader:
+				mesh.mesh.material.shader = rail_shader
 		_:
-			mesh.mesh.material.shader = flicker_shader
+			if mesh.mesh.material.shader != flicker_shader:
+				mesh.mesh.material.shader = flicker_shader
 	.play(name,custom_blend,custom_speed,from_end)

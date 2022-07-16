@@ -13,8 +13,12 @@ export(float) var speed = 10
 
 export(Vector3) var linear_velocity : Vector3
 
+export (bool) var y_lock : bool = true
+var y_lock_val : float = 0.0
 
-
+func _ready()->void:
+	if y_lock:
+		y_lock_val = translation.y
 #is true if the mouse is in the game
 var mouse_in : bool = false
 
@@ -57,7 +61,9 @@ func _physics_process(delta):
 	
 	#look_at(global_transform*transform.affine_inverse()*Vector3(point_vector.x,0,point_vector.y),global_transform*transform.affine_inverse()*Vector3(0,1,0))
 	move_and_collide(linear_velocity*delta)
-
+	
+	if y_lock:
+		translation.y = y_lock
 
 func look_at_mouse()->void:
 	var cam_target = cam.project_ray_normal(get_viewport().get_mouse_position())
@@ -87,4 +93,7 @@ func _input(event):
 	if (event is InputEventKey or event is InputEventJoypadMotion):
 		movement_vector = Input.get_vector("move_left","move_right","move_down","move_up")
 func hit_target(target):
-	print("hit a target!")
+	target = target.get_parent()
+	if target.has_method("take_damage"):
+		print("DEALING DAMAGE TO " + target.name)
+		target.take_damage(dice_container.roll(),self)
