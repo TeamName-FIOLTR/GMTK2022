@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/scripts/generics/dice_container.gd" type="Script" id=2]
 [ext_resource path="res://scenes/ray_cast_lazer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/scripts/PlayerBootstrap.gd" type="Script" id=4]
 [ext_resource path="res://scenes/UI/Title.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/scripts/dice.gd" type="Script" id=6]
+[ext_resource path="res://assets/scripts/dice_powers/debug_power.gd" type="Script" id=7]
 
 [sub_resource type="BoxShape" id=3]
 
@@ -25,6 +27,10 @@ lazer_path = NodePath("lazer")
 [node name="DiceContainer" type="Node" parent="Player"]
 script = ExtResource( 2 )
 
+[node name="Dice" type="Node" parent="Player/DiceContainer"]
+script = ExtResource( 6 )
+roller_path = NodePath("../..")
+
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
 shape = SubResource( 3 )
 
@@ -42,3 +48,12 @@ length = 100.0
 
 [node name="Power Title" parent="Player" instance=ExtResource( 5 )]
 visible = false
+
+[node name="DebugDicePower" type="Node" parent="Player"]
+script = ExtResource( 7 )
+global = true
+enabled = true
+
+[node name="DebugDicePower2" type="Node" parent="Player"]
+script = ExtResource( 7 )
+enabled = true

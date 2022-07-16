@@ -131,8 +131,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.45852, 0 )
 [node name="mesh" parent="art" instance=ExtResource( 2 )]
 
 [node name="Area" type="Area" parent="."]
-collision_layer = 0
-collision_mask = 6
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )

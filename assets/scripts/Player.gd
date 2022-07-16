@@ -1,4 +1,7 @@
 extends Entity
+#this represents the main player class of the game
+
+class_name Player
 
 export(NodePath) var camera_path : NodePath
 onready var cam : Camera = get_node(camera_path)
@@ -96,14 +99,15 @@ func _input(event):
 func hit_target(target):
 	target = target.get_parent()
 	if target.has_method("take_damage"):
-		print("DEALING DAMAGE TO " + target.name)
 		target.take_damage(dice_container.roll(),self)
+
 #actually takes the power
 func take_power(power : DicePower,damage_up : int)->void:
 	power.enabled = true
 	add_child(power)
-	var new_dice : Dice = Dice.new(damage_up)
-	dice_container.add_dice(new_dice)
+	
+	dice_container.add_dice_from_number(damage_up,self)
+	
 #sets up the ui to ask if we want to take the power
 func ask_power(power : DicePower,damage_up : int)->void:
 	#query the user wether or not they want to confirm

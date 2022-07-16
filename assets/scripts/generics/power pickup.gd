@@ -30,7 +30,7 @@ func _ready():
 #true if we are giving a power
 var giving = null
 func _on_Area_body_entered(body):
-	if not is_instance_valid(giving):
+	if body is Player and not is_instance_valid(giving):
 		$AnimationPlayer.play("pickup")
 		giving = body
 

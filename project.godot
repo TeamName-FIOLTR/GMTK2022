@@ -59,10 +59,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scripts/lazer/lazer.gd"
 }, {
+"base": "DicePower",
+"class": "MaxDuplicateDicePower",
+"language": "GDScript",
+"path": "res://assets/scripts/dice_powers/dice_duplication.gd"
+}, {
+"base": "DicePower",
+"class": "MinDuplicationDicePower",
+"language": "GDScript",
+"path": "res://assets/scripts/dice_powers/dice_duplicate_low.gd"
+}, {
 "base": "RigidBody",
 "class": "PhysicsDice",
 "language": "GDScript",
 "path": "res://assets/scripts/Physics Dice.gd"
+}, {
+"base": "Entity",
+"class": "Player",
+"language": "GDScript",
+"path": "res://assets/scripts/Player.gd"
 }, {
 "base": "Spatial",
 "class": "PowerPickup",
@@ -80,7 +95,10 @@ _global_script_class_icons={
 "Entity": "",
 "Gun": "",
 "Lazer": "",
+"MaxDuplicateDicePower": "",
+"MinDuplicationDicePower": "",
 "PhysicsDice": "",
+"Player": "",
 "PowerPickup": ""
 }
 

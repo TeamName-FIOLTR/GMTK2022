@@ -26,7 +26,6 @@ anchor_bottom = 0.2
 custom_fonts/font = SubResource( 6 )
 text = "When A 6 is rolled. Scream"
 align = 1
-valign = 1
 
 [node name="damage increase" type="Label" parent="."]
 anchor_left = 0.25

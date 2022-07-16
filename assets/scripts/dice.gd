@@ -13,9 +13,6 @@ export var dice_type : int = 6
 func get_roller()->Node:
 	return get_parent()
 
-func _init(type : int)->void:
-	dice_type = type
-
 #returns a number from 1 to the dice type
 func generate_random_roll()->int:
 	return (randi() % dice_type) + 1

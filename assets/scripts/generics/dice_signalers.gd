@@ -9,7 +9,12 @@ class_name DiceSignaler
 #this is a buffer to store our random roll before returning
 #we store it here so others can modify it before return
 var roll_buffer : int
+
 var roller : Node = null
+
+export(NodePath) var roller_path : NodePath
+func _ready():
+	roller = get_node(roller_path)
 #tell everyone about our roll
 #seperate so non rng dice can emit numbers on their roll
 func emit_self()->void:
@@ -21,8 +26,8 @@ func emit_self()->void:
 	
 	for node in get_tree().get_nodes_in_group("dice_changers"):
 		node.recive_dice(self)
-func get_roller()->Node:
-	if roller:
+func get_dice_roller()->Node:
+	if roller != null:
 		return roller
 	return get_parent()
 #gets the roll, but AFTER all of the dice powers

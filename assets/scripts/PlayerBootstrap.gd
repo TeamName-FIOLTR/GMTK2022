@@ -6,6 +6,7 @@ export(NodePath) var camera : NodePath
 # var b = "text"
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Player.cam = get_node(camera)

@@ -122,10 +122,6 @@ func snap_to_face(face_n : int)->void:
 	
 	#y is wacky
 	
-	print("new x ", new_x)
-	print("new y ", new_y)
-	print("new z ", new_z)
-	
 	# trans rights
 	var new_trans = Transform(new_x,new_y,new_z,Vector3(0,0,0))
 	if new_trans.affine_inverse().basis.determinant() != 0:

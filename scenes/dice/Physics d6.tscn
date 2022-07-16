@@ -148,7 +148,6 @@ tracks/0/keys = {
 [node name="Physics d6" type="RigidBody"]
 script = ExtResource( 1 )
 cool_anim_mesh_path = NodePath("d6 vertex col or idk utgfvhn /d6weird ilght mesh")
-line_thickness = 0.2
 brightness = 16.0
 
 [node name="d6 lez go" parent="." instance=ExtResource( 3 )]

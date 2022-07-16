@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/enemies/HWalker.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/scripts/Test Level.gd" type="Script" id=4]
 [ext_resource path="res://scene/generics/power pickup.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/scripts/dice_powers/debug_power.gd" type="Script" id=6]
+[ext_resource path="res://assets/scripts/dice_powers/dice_duplicate_low.gd" type="Script" id=7]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -135,7 +135,8 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.733333 )
 
 [node name="Walker" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.437704, 1.37828, 2.79529 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.408414, 1.37828, 2.72458 )
+starting_hp = 50
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 7 )
@@ -147,10 +148,9 @@ transform = Transform( 1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0
 fov = 67.5
 
 [node name="power pickup" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84799, 0, 6.24869 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.62866, 0, 2.65677 )
 
-[node name="DebugDicePower" type="Node" parent="power pickup"]
-script = ExtResource( 6 )
-global = true
+[node name="MinDuplicationDicePower" type="Node" parent="power pickup"]
+script = ExtResource( 7 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -42,7 +42,7 @@ func power(d : DiceSignaler)->void:
 #called when a dice is rolled, only runs if it makes
 #sense to run
 func recive_dice(d : DiceSignaler)->void:
-	if enabled and (global or d.get_roller() == self):
+	if enabled and (global or d.get_dice_roller() == get_parent()):
 		power(d)
 
 #overidable ready in case you want to 

@@ -32,7 +32,6 @@ aabb = AABB( -0.757, -0.743, -0.756, 1.511, 1.475, 1.519 )
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 
 [node name="flat_art" type="Spatial" parent="art"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="face" type="Spatial" parent="art/flat_art"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03766, 0, -0.00485374 )
