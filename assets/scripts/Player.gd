@@ -37,13 +37,19 @@ func _physics_process(delta):
 	
 	linear_velocity = Vector3(movement_vector.x,0,-movement_vector.y)*speed
 	
+
 	var joy_vector : Vector2 = Input.get_vector("point_left","point_right","point_up","point_down")
+	
 	if joy_vector.length_squared() > 0.9:
 			point_vector = joy_vector
-	
-	rotation.y = -atan2(point_vector.y,point_vector.x)
-	if mouse_in:
+	elif mouse_in:
 		look_at_mouse()
+	else:
+		point_vector = Vector2(linear_velocity.x,linear_velocity.z)
+
+	if not Input.is_action_pressed("deny_rotation"):
+		rotation.y = -atan2(point_vector.y,point_vector.x)
+	
 	#look_at(global_transform*transform.affine_inverse()*Vector3(point_vector.x,0,point_vector.y),global_transform*transform.affine_inverse()*Vector3(0,1,0))
 	move_and_collide(linear_velocity*delta)
 
