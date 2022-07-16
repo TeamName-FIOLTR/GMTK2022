@@ -6,8 +6,9 @@ render_mode unshaded;
 	inteanded for fireing the lazer
 */
 uniform float time;
-uniform float bulb_radius = 2.545;
+uniform float bulb_radius = 20;
 uniform float bulb_len = 0.89;
+uniform vec3 color;
 
 void vertex() {
 		float time_point = (1.0 - VERTEX.y - time);
@@ -17,4 +18,7 @@ void vertex() {
 		}
 		VERTEX.x *= scale_factor;
 		VERTEX.z *= scale_factor;
+}
+void fragment() {
+	ALBEDO = color;
 }

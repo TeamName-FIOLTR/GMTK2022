@@ -8,3 +8,6 @@ script = ExtResource( 2 )
 
 [node name="lazer" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128172, 0.0390325, -0.0234937 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.430387, 0, 0.888222 )

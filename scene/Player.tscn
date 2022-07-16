@@ -13,6 +13,7 @@
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
 dice_container_path = NodePath("DiceContainer")
+lazer_path = NodePath("lazer")
 
 [node name="DiceContainer" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -20,13 +21,11 @@ script = ExtResource( 2 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 3 )
 
-[node name="Spatial" type="Spatial" parent="."]
-
-[node name="CSGMesh" type="CSGMesh" parent="Spatial"]
+[node name="CSGMesh" type="CSGMesh" parent="."]
 transform = Transform( -4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 1 )
 material = SubResource( 2 )
 
-[node name="lazer" parent="Spatial" instance=ExtResource( 3 )]
-transform = Transform( 9.368, 0, 0, 0, 1, 0, 0, 0, 1, 1.06746, 0, 0 )
-length = 9.368
+[node name="lazer" parent="." instance=ExtResource( 3 )]
+transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 1, 1.06746, 0, 0 )
+length = 100.0

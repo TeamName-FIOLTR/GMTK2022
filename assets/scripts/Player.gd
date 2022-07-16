@@ -1,14 +1,19 @@
 extends Entity
 
+export(NodePath) var camera_path : NodePath
+onready var cam : Camera = get_node(camera_path)
+export(NodePath) var lazer_path : NodePath
+onready var lazer : Lazer = get_node(lazer_path)
+
 
 export(Vector2) var movement_vector
 export(Vector2) var point_vector setget set_point_vector
 export(float) var speed = 10
 
-export(NodePath) var camera_path : NodePath
-onready var cam : Camera = get_node(camera_path)
 
 export(Vector3) var linear_velocity : Vector3
+
+
 
 #is true if the mouse is in the game
 var mouse_in : bool = false
@@ -44,7 +49,7 @@ func _physics_process(delta):
 			point_vector = joy_vector
 	elif mouse_in:
 		look_at_mouse()
-	else:
+	elif linear_velocity.length_squared() > 0.9:
 		point_vector = Vector2(linear_velocity.x,linear_velocity.z)
 
 	if not Input.is_action_pressed("deny_rotation"):
@@ -81,6 +86,5 @@ func _notification(what):
 func _input(event):
 	if (event is InputEventKey or event is InputEventJoypadMotion):
 		movement_vector = Input.get_vector("move_left","move_right","move_down","move_up")
-	if event is InputEventAction:
-		if event.action in ["point_left","point_right","point_up","point_down"]:
-			self.point_vector = Input.get_vector("point_left","point_right","point_down","point_up")
+func hit_target(target):
+	print("hit a target!")

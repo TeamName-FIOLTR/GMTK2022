@@ -16,7 +16,6 @@ onready var dice_container : Node = get_node(dice_container_path)
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+#called when we hit a target
+func hit_target(target)->void:
+	pass

@@ -2,13 +2,12 @@
 
 [ext_resource path="res://assets/scripts/lazer/lazer.gd" type="Script" id=1]
 [ext_resource path="res://assets/scripts/lazer/lazer_animation_player.gd" type="Script" id=2]
-[ext_resource path="res://assets/shaders/pew_pew_lazer.gdshader" type="Shader" id=3]
+[ext_resource path="res://assets/shaders/rail_gun.gdshader" type="Shader" id=3]
 
 [sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 3 )
 shader_param/time = 0.0
-shader_param/bulb_radius = 2.545
-shader_param/bulb_len = 0.89
+shader_param/color = Vector3( 0, 0, 0 )
 
 [sub_resource type="CylinderMesh" id=4]
 material = SubResource( 6 )
@@ -33,21 +32,25 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=8]
 resource_name = "fire_main"
-length = 0.3
-tracks/0/type = "bezier"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
 tracks/0/path = NodePath(".:time")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.1, 0.3 )
+"times": PoolRealArray( 0, 0.02, 0.09 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 40.0708, 0.0 ]
 }
 
 [sub_resource type="Animation" id=10]
 resource_name = "pew pew fire"
 length = 0.5
+step = 0.01
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:time")
 tracks/0/interp = 1
@@ -56,7 +59,7 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "points": PoolRealArray( -1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5 )
+"times": PoolRealArray( 0, 0.14 )
 }
 
 [node name="lazer" type="Spatial"]
@@ -69,6 +72,7 @@ mesh = SubResource( 4 )
 [node name="RayCast" type="RayCast" parent="CSGMesh2"]
 transform = Transform( 0.998594, 2.13163e-14, 0, -1.42109e-14, 0.998594, 0, 0, 0, 0.998594, 1.77636e-15, 0.5, 0 )
 enabled = true
+cast_to = Vector3( 0, -1.01, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 9 )
@@ -76,3 +80,6 @@ anims/fire_main = SubResource( 8 )
 "anims/pew pew fire" = SubResource( 10 )
 script = ExtResource( 2 )
 mesh_path = NodePath("../CSGMesh2")
+
+[node name="cool_down" type="Timer" parent="."]
+one_shot = true
