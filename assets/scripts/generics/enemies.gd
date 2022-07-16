@@ -17,5 +17,5 @@ func hit_target(target)->void:
 func _process(delta):
 	$art.translation = $phys_dice.translation
 
-func take_damage(amount : int, src: Node)->void:
+func take_damage(amount : int, src: Spatial)->void:
 	pass

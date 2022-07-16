@@ -22,11 +22,3 @@ func _ready():
 func _process(delta):
 	get_tree().call_group("Arbitrary Data Recievers", "recieve_arbitrary_data", "d6 Rolled Face", get_rolled_face())
 #	pass
-
-func play_spawn_anim():
-	$AnimationPlayer.play("Spawn In")
-
-func thingy_func():
-	$AnimationPlayer.play("Rolled Final")
-	print("THIOUGNDAHNL;KFJS")
-	pass

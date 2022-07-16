@@ -23,6 +23,7 @@ physics_material_override = SubResource( 1 )
 axis_lock_linear_y = true
 linear_velocity = Vector3( -10, 0, 0 )
 linear_damp = 0.0
+freash_dice = false
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="phys_dice"]
 aabb = AABB( -0.757, -0.743, -0.756, 1.511, 1.475, 1.519 )
@@ -43,6 +44,7 @@ texture = ExtResource( 4 )
 [node name="gun" parent="art/flat_art" instance=ExtResource( 5 )]
 transform = Transform( 4.18652, 0, 3.32704e-08, 0, 1, 0, -1.39287e-07, 0, 1, 1.04065, 0, -4.54884e-08 )
 visible = false
+force = 1.0
 collision_mask = 3
 container_path = NodePath("../../..")
 length = 4.18652

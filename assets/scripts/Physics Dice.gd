@@ -8,14 +8,14 @@ var check_vector = Vector3(0,1,0)
 export(float) var linear_velocity_threashold = 0.1
 export(float) var angular_velocity_threashold = 0.1
 export(float) var facing_threashold = 0.1
-export(bool) var lock_roll = true
+export(bool) var lock_roll = false
 
 export(NodePath) var cool_anim_mesh_path
 export(float) var radial_reveal = 1 setget set_radial_reveal
 export(float) var line_thickness = 0.2 setget set_line_thickness
 export(float) var brightness = 4 setget set_brightness
 var rolled : bool = false
-var freash_dice : bool = true
+export(bool) var freash_dice : bool = true
 export(Array, Vector3) var face_normals = []
 export(Array, int) var face_numbers = []
 
@@ -60,6 +60,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func get_rotating()->bool:
+	return angular_velocity.length_squared() > 0.01
+func get_moving()->bool:
+	return linear_velocity.length_squared() > 0.01
+func get_rolling()->bool:
+	return get_moving() and get_rotating()
 
 func _physics_process(delta):
 	if !freash_dice and !rolled and (linear_velocity.length() <= linear_velocity_threashold and angular_velocity.length() <= angular_velocity_threashold and get_face_closeness()>=(1.0-facing_threashold)):
@@ -70,12 +76,13 @@ func _physics_process(delta):
 #			set_physics_process_internal(false)
 			mode = RigidBody.MODE_STATIC
 #			print("I'M DONE")
-		thingy_func()
+		roll_finished_animation()
 		dice_signaler.roll_buffer = get_rolled_face()
 		dice_signaler.emit_self()
 	elif rolled and !lock_roll:
 		if linear_velocity.length() >= linear_velocity_threashold or angular_velocity.length() >= angular_velocity_threashold:
 			rolled = false
+			rolling_animation()
 	elif freash_dice:
 		if linear_velocity.length() >= linear_velocity_threashold or angular_velocity.length() >= angular_velocity_threashold:
 			freash_dice = false
@@ -127,10 +134,6 @@ func snap_to_face(face_n : int)->void:
 	linear_velocity = Vector3(0,0,0)
 	angular_velocity = Vector3(0,0,0)
 	sleeping = true
-
-	yield(get_tree(),"idle_frame")
-	print(global_transform.basis)
-	print(translation)
 #snaps the dice to the nearest roll and stops all rolling
 func snap_normal()->void:
 #	rotation
@@ -144,12 +147,23 @@ func snap_normal()->void:
 
 #	global_transform.basis = new_trans.basis
 
+#needs to be overloaded by children classes
+func play_spawn_anim():
+	if $AnimationPlayer:
+		$AnimationPlayer.play("Spawn In")
+
+#make angular vecocity WIIIIIILD
+func roll(aggression)->void:
+	angular_velocity = Vector3(aggression*randf(),aggression*randf(),aggression*randf())
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
 #		apply_impulse(Vector3(randf(),randf(),randf()),10*Vector3(randf(),randf(),randf()))
 		apply_torque_impulse(10*Vector3(randf(),randf(),randf()))
 
-
-func thingy_func():
-	pass
+func rolling_animation():
+	if $AnimationPlayer:
+		$AnimationPlayer.play("rolling")
+func roll_finished_animation():
+	if $AnimationPlayer:
+		$AnimationPlayer.play("Rolled Final")

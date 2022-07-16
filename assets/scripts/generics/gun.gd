@@ -3,6 +3,7 @@ extends Spatial
 
 class_name Gun
 
+export(float) var force : float = 20.0
 #export collision mask
 export(int,LAYERS_3D_PHYSICS) var collision_mask : int = 1
 
