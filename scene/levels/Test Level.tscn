@@ -133,7 +133,7 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.733333 )
 
 [node name="Walker" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48525, 1.37828, -7.91545 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.437704, 1.37828, 2.79529 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 7 )
@@ -141,7 +141,7 @@ environment = SubResource( 7 )
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50.6442, 3.34566 )
-fov = 40.0
+transform = Transform( 1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0.00884056, 21.6254, 12.4529 )
+fov = 67.5
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

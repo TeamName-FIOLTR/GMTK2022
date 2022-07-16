@@ -36,3 +36,7 @@ collision_mask = 5
 container_path = NodePath("..")
 player_controled = true
 length = 100.0
+
+[node name="TItle" type="Control" parent="Player"]
+anchor_right = 1.0
+anchor_bottom = 1.0

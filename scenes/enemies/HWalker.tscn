@@ -12,6 +12,7 @@ friction = 0.0
 [node name="Walker" type="Spatial"]
 script = ExtResource( 2 )
 dice_container_path = NodePath("dice")
+gun_path = NodePath("art/flat_art/gun")
 
 [node name="dice" type="Node" parent="."]
 script = ExtResource( 1 )
@@ -29,20 +30,21 @@ aabb = AABB( -0.757, -0.743, -0.756, 1.511, 1.475, 1.519 )
 [node name="art" type="Spatial" parent="."]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 
-[node name="face" type="Spatial" parent="art"]
-transform = Transform( 0.999989, 0, -0.00467747, 0, 1, 0, 0.00467747, 0, 0.999989, 0.875036, 0, 0 )
+[node name="flat_art" type="Spatial" parent="art"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
-[node name="axil" type="Spatial" parent="art/face"]
+[node name="face" type="Spatial" parent="art/flat_art"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03766, 0, -0.00485374 )
 
-[node name="Sprite3D" type="Sprite3D" parent="art/face/axil"]
-transform = Transform( -4.37722e-08, 0, 1, 0, 1, 0, -1, 0, -4.37722e-08, 0.0736389, 0, 0 )
+[node name="Sprite3D" type="Sprite3D" parent="art/flat_art/face"]
+transform = Transform( -1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 0.0736389, 0, 0 )
 texture = ExtResource( 4 )
 
-[node name="gun" parent="art" instance=ExtResource( 5 )]
+[node name="gun" parent="art/flat_art" instance=ExtResource( 5 )]
 transform = Transform( 4.18652, 0, 3.32704e-08, 0, 1, 0, -1.39287e-07, 0, 1, 1.04065, 0, -4.54884e-08 )
 visible = false
 collision_mask = 3
-container_path = NodePath("../..")
+container_path = NodePath("../../..")
 length = 4.18652
 
 [connection signal="body_entered" from="phys_dice" to="." method="_on_phys_dice_body_entered"]
