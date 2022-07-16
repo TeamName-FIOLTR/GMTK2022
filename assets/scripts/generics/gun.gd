@@ -3,6 +3,8 @@ extends Spatial
 
 class_name Gun
 
+#export collision mask
+export(int,LAYERS_3D_PHYSICS) var collision_mask : int = 1
 
 export(NodePath) var raycast_path : NodePath
 onready var raycast : RayCast = get_node(raycast_path)

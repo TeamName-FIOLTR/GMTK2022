@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/scripts/dice/Physics d6.gd" type="Script" id=1]
 [ext_resource path="res://assets/materials/Dice Material.tres" type="Material" id=2]
@@ -8,63 +8,6 @@
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.75, 0.75, 0.75 )
-
-[sub_resource type="Animation" id=2]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("d6 lez go:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("d6 vertex col or idk utgfvhn :visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath(".:radial_reveal")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/3/type = "bezier"
-tracks/3/path = NodePath(".:brightness")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"points": PoolRealArray( 4, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/4/type = "bezier"
-tracks/4/path = NodePath(".:line_thickness")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"points": PoolRealArray( 0.2, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
 
 [sub_resource type="Animation" id=4]
 resource_name = "Rolled Final"
@@ -175,8 +118,8 @@ tracks/3/keys = {
 [node name="Physics d6" type="RigidBody"]
 script = ExtResource( 1 )
 cool_anim_mesh_path = NodePath("d6 vertex col or idk utgfvhn /d6weird ilght mesh")
-radial_reveal = 0.0
-line_thickness = 0.2
+line_thickness = 0.3
+brightness = 16.0
 
 [node name="d6 lez go" parent="." instance=ExtResource( 3 )]
 
@@ -194,7 +137,6 @@ visible = false
 material/0 = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 2 )
 "anims/Rolled Final" = SubResource( 4 )
 "anims/Spawn In" = SubResource( 3 )
 

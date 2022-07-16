@@ -64,10 +64,6 @@ glow_high_quality = true
 [node name="Test Level" type="Spatial" groups=["Arbitrary Data Recievers"]]
 script = ExtResource( 4 )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.40645, 0.913673, 0, -0.913673, 0.40645, 0, 18.5416, 3.34566 )
-fov = 40.0
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
 camera = NodePath("../Camera")
 
@@ -95,6 +91,7 @@ material = SubResource( 3 )
 transform = Transform( -1.05787e-06, -1, 0, 24.2013, -4.37114e-08, 0, 0, 0, 24.2013, -24.0835, 19.7154, -0.526218 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody3"]
+transform = Transform( 1, 0, 0, -1.59162e-12, 1, 0, 0, 0, 1, 0.00508171, -1.7559, 0.0274914 )
 shape = SubResource( 1 )
 
 [node name="CSGMesh" type="CSGMesh" parent="StaticBody3"]
@@ -136,12 +133,15 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.733333 )
 
 [node name="Walker" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42765, 1.2593, -5.23195 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48525, 1.37828, -7.91545 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 7 )
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50.6442, 3.34566 )
+fov = 40.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

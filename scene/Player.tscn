@@ -31,6 +31,8 @@ mesh = SubResource( 1 )
 material = SubResource( 2 )
 
 [node name="lazer" parent="Player" instance=ExtResource( 3 )]
-transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 1, 1.06746, -0.700338, 0 )
+transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+collision_mask = 5
+container_path = NodePath("..")
 player_controled = true
 length = 100.0

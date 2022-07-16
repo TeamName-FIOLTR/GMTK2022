@@ -104,40 +104,44 @@ func get_face_closeness():
 	var local_check_vector = global_transform.affine_inverse().basis*check_vector
 	var amount = local_check_vector.dot(face_norm)
 	return amount
+func snap_to_face(face_n : int)->void:
+	var target_normal = face_normals[face_n-1]
+	var new_y = target_normal
+	var new_x = new_y.cross(global_transform.affine_inverse().basis*Vector3(0,1,0))
+	var new_z = new_x.cross(target_normal)
+	new_x = new_x.normalized()
+	new_z = new_z.normalized()
+	new_y = new_y.normalized()
+	
+	#y is wacky
+	
+	print("new x ", new_x)
+	print("new y ", new_y)
+	print("new z ", new_z)
+	
+	# trans rights
+	var new_trans = Transform(new_x,new_y,new_z,Vector3(0,0,0))
+	if new_trans.affine_inverse().basis.determinant() != 0:
+		global_transform.basis = new_trans.affine_inverse().basis
 
+	linear_velocity = Vector3(0,0,0)
+	angular_velocity = Vector3(0,0,0)
+	sleeping = true
+
+	yield(get_tree(),"idle_frame")
+	print(global_transform.basis)
+	print(translation)
 #snaps the dice to the nearest roll and stops all rolling
 func snap_normal()->void:
 #	rotation
 #	look_at(global_transform*Vector3(1,0,0),Vector3(0,1,0))
-	
 	var face_n = get_rolled_face()
+
 	if len(face_numbers) > 0 and face_n in face_numbers:
 		pass
 	else:
-		print("target normal ", face_normals[face_n-1])
-		var target_normal = face_normals[face_n-1]
-		var new_y = target_normal
-		var new_x = new_y.cross(global_transform.affine_inverse().basis*Vector3(0,1,0))
-		var new_z = new_x.cross(target_normal)
-		new_x = new_x.normalized()
-		new_z = new_z.normalized()
-		new_y = new_y.normalized()
-		
-		#y is wacky
-		
-		print("new x ", new_x)
-		print("new y ", new_y)
-		print("new z ", new_z)
-		
-		# trans rights
-		var new_trans = Transform(new_x,new_y,new_z,Vector3(0,0,0))
-		
-		global_transform.basis = new_trans.affine_inverse().basis
-	linear_velocity = Vector3(0,0,0)
-	angular_velocity = Vector3(0,0,0)
-	sleeping = true
-	yield(get_tree(),"idle_frame")
-	print(global_transform.basis)
+		snap_to_face(face_n)
+
 #	global_transform.basis = new_trans.basis
 
 

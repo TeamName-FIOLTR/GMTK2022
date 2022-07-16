@@ -7,13 +7,43 @@
 code = "shader_type spatial;
 render_mode unshaded;
 
-uniform float time;
+uniform int mode = 0;
+
+uniform float time = 0.0;
+
+uniform float flicker_speed = 20;
+uniform float flicker_amount = 0.5;
+
+
+uniform float bulb_radius = 20;
+uniform float bulb_len = 0.89;
+
+
+
+
 uniform vec3 color;
 
 void vertex() {
-	float scale_factor = time;
-	VERTEX.x *= scale_factor;
-	VERTEX.z *= scale_factor;
+	if (mode == 0) {
+		float scale_factor = (cos(TIME*flicker_speed)*flicker_amount + 1.0 + flicker_amount);
+		VERTEX.x *= scale_factor;
+		VERTEX.z *= scale_factor;
+	}
+	else if (mode == 1 ){
+		float scale_factor = time;
+		VERTEX.x *= scale_factor;
+		VERTEX.z *= scale_factor;
+	}
+	else if (mode == 2) {
+		float time_point = (1.0 - VERTEX.y - time);
+		float scale_factor = 1.0;
+		if (time_point > 0.0 && bulb_len > time_point) {
+			scale_factor = time_point * bulb_radius;
+		}
+		VERTEX.x *= scale_factor;
+		VERTEX.z *= scale_factor;
+	}
+	
 }
 void fragment() {
 	ALBEDO = color;
@@ -22,10 +52,16 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=12]
 resource_local_to_scene = true
 shader = SubResource( 11 )
-shader_param/time = 0.0
-shader_param/color = Vector3( 0, 0, 0 )
+shader_param/mode = 1
+shader_param/time = 1.0
+shader_param/flicker_speed = 20.0
+shader_param/flicker_amount = 0.5
+shader_param/bulb_radius = 20.0
+shader_param/bulb_len = 0.89
+shader_param/color = Vector3( 1, 0, 0 )
 
 [sub_resource type="CylinderMesh" id=4]
+resource_local_to_scene = true
 material = SubResource( 12 )
 top_radius = 0.01
 bottom_radius = 0.01

@@ -3,20 +3,18 @@ extends AnimationPlayer
 export var mesh_path : NodePath
 onready var mesh : CSGMesh = get_node(mesh_path)
 
-var pew_pew_shader = load("res://assets/shaders/pew_pew_lazer.gdshader")
-var rail_shader = load("res://assets/shaders/rail_gun.gdshader")
-var flicker_shader = load("res://assets/shaders/lazer_flicker.gdshader")
-
+enum LAZER_SHADER_MODES {
+	FLICKER,
+	SCALE_WITH_TIME,
+	PEW_PEW
+}
 func play(name : String = "", custom_blend : float = -1, custom_speed: float = 1.0, from_end: bool = false)->void:
 	match name:
 		"pew pew fire":
-			if mesh.mesh.material.shader != pew_pew_shader:
-				mesh.mesh.material.shader = pew_pew_shader
+			mesh.mesh.material.set_shader_param("mode",LAZER_SHADER_MODES.PEW_PEW)
 			
 		"fire_main":
-			if mesh.mesh.material.shader != rail_shader:
-				mesh.mesh.material.shader = rail_shader
+			mesh.mesh.material.set_shader_param("mode",LAZER_SHADER_MODES.SCALE_WITH_TIME)
 		_:
-			if mesh.mesh.material.shader != flicker_shader:
-				mesh.mesh.material.shader = flicker_shader
+			mesh.mesh.material.set_shader_param("mode",LAZER_SHADER_MODES.FLICKER)	
 	.play(name,custom_blend,custom_speed,from_end)

@@ -7,6 +7,8 @@ extends Gun
 class_name Lazer
 export var time : float setget set_time,get_time
 
+
+
 export(Color) var color : Color setget set_color,get_color
 
 func set_color(val : Color)->void:
@@ -29,6 +31,7 @@ var original_length : float
 
 func _ready():
 	original_length = scale.x
+	$CSGMesh2/RayCast.collision_mask = collision_mask
 	print(original_length)
 
 func set_time(val : float)->void:
@@ -41,7 +44,9 @@ func get_time()->float:
 func _process(delta):
 	if not Engine.editor_hint:
 		if $CSGMesh2/RayCast.is_colliding():
-			self.length = global_transform.origin.distance_to($CSGMesh2/RayCast.get_collision_point())
+			var dist = global_transform.origin.distance_to($CSGMesh2/RayCast.get_collision_point())
+			if dist < original_length:
+				self.length = dist
 		else:
 			self.length = original_length
 	get_tree().call_group("Arbitrary Data Recievers", "recieve_arbitrary_data", "lazer do be hit this", get_collider())

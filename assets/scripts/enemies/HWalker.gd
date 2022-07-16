@@ -25,4 +25,5 @@ func _process(delta):
 func take_damage(amount : int, source :Node)->void:
 	$phys_dice.snap_normal()
 	$phys_dice.lock_roll = false
+	$phys_dice.mode = RigidBody.MODE_RIGID
 	.take_damage(amount,source)
