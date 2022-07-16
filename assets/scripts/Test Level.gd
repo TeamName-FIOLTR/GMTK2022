@@ -28,7 +28,7 @@ func recieve_arbitrary_data(data, value):
 func _input(event):
 	if event is InputEventKey:
 		if event.scancode == KEY_SPACE:
-			$Player/Player/ObjectSpawner.spawn_object()
+			print($Player/Player/DiceContainer.get_dice_container_str())
 
 func _on_Timer_timeout():
 	var n_x = 2*randf()-1

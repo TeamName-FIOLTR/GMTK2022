@@ -9,6 +9,24 @@ var dice_array : Array
 func _ready():
 	for node in get_children():
 		(node as Dice).roller = get_parent()
+func get_dice_counts_by_type()->Dictionary:
+	var dict : Dictionary = {}
+	for node in get_children():
+		if node is Dice:
+			if node.dice_type in dict:
+				dict[node.dice_type] += 1
+			else:
+				dict[node.dice_type] = 1
+	return dict
+
+func get_dice_container_str()->String:
+	var dice_counts = get_dice_counts_by_type()
+	var ret_str : String
+	
+	for key in dice_counts:
+		ret_str += str(dice_counts[key]) + "d" + str(key) + " "
+	
+	return ret_str
 
 func dice_count()->int:
 	return len(get_children())
