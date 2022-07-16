@@ -54,7 +54,7 @@ func _process(delta):
 #attempt to actually hit somthing
 func fire()->void:
 	visible = true
-	self.color = Color.cyan
+	self.color = Color.red
 	if self.get_node("AnimationPlayer").current_animation != "fire_main":
 		self.get_node("AnimationPlayer").play("fire_main")
 	.fire()
@@ -63,5 +63,5 @@ func fire()->void:
 func aim()->void:
 	self.get_node("AnimationPlayer").play("RESET")
 	self.visible = true
-	self.color = Color.red
+	self.color = Color.green
 	.aim()

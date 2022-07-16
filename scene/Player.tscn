@@ -63,7 +63,7 @@ enabled = true
 
 [node name="ObjectSpawner" type="Spatial" parent="Player"]
 script = ExtResource( 9 )
-objects = [ ExtResource( 10 ), ExtResource( 8 ) ]
+objects = [ ExtResource( 8 ), ExtResource( 10 ) ]
 radius = 20.0
 
 [node name="enemy_spawn_timer" type="Timer" parent="Player/ObjectSpawner"]
