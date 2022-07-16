@@ -10,6 +10,9 @@ onready var cam : Camera = get_node(camera_path)
 
 export(Vector3) var linear_velocity : Vector3
 
+#is true if the mouse is in the game
+var mouse_in : bool = false
+
 func set_point_vector(n_vector : Vector2):
 	point_vector = n_vector.normalized()
 	if not is_inside_tree(): yield()
@@ -21,8 +24,6 @@ func set_point_vector(n_vector : Vector2):
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,9 +36,41 @@ func _physics_process(delta):
 #	rotation.y = -point_vector.angle()
 	
 	linear_velocity = Vector3(movement_vector.x,0,-movement_vector.y)*speed
-	look_at(global_transform*transform.affine_inverse()*Vector3(point_vector.x,0,point_vector.y),global_transform*transform.affine_inverse()*Vector3(0,1,0))
+	
+	var joy_vector : Vector2 = Input.get_vector("point_left","point_right","point_up","point_down")
+	if joy_vector.length_squared() > 0.9:
+			point_vector = joy_vector
+	
+	rotation.y = -atan2(point_vector.y,point_vector.x)
+	if mouse_in:
+		look_at_mouse()
+	#look_at(global_transform*transform.affine_inverse()*Vector3(point_vector.x,0,point_vector.y),global_transform*transform.affine_inverse()*Vector3(0,1,0))
 	move_and_collide(linear_velocity*delta)
 
+
+func look_at_mouse()->void:
+	var cam_target = cam.project_ray_normal(get_viewport().get_mouse_position())
+		
+	var collision_plane = Plane.PLANE_XZ
+	collision_plane.d = 0
+		
+		
+	var target_point = collision_plane.intersects_ray(cam.translation,cam_target.normalized())
+		
+	target_point = transform*global_transform.affine_inverse()*target_point - translation
+		
+		
+		
+	point_vector.x = target_point.x
+	point_vector.y = target_point.z
+
+#control wether or not the mouse is in the screen
+func _notification(what):
+	match what:
+		NOTIFICATION_WM_MOUSE_ENTER:
+			mouse_in = true
+		NOTIFICATION_WM_MOUSE_EXIT:
+			mouse_in = false
 
 func _input(event):
 	if (event is InputEventKey or event is InputEventJoypadMotion):
@@ -45,22 +78,3 @@ func _input(event):
 	if event is InputEventAction:
 		if event.action in ["point_left","point_right","point_up","point_down"]:
 			self.point_vector = Input.get_vector("point_left","point_right","point_down","point_up")
-	if event is InputEventMouseMotion:
-		var cam_target = cam.project_ray_normal(event.position)
-		
-		var collision_plane = Plane.PLANE_XZ
-		collision_plane.d = 0
-		
-		
-		var target_point = collision_plane.intersects_ray(cam.translation,cam_target.normalized())
-		
-		target_point = transform*global_transform.affine_inverse() * target_point
-		
-		
-		
-		point_vector.x = target_point.x
-		point_vector.y = target_point.z 
-		
-		#target_point = global_transform.affine_inverse()*target_point
-		
-		
