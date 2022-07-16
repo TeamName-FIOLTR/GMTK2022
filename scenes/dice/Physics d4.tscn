@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/materials/Dice Material.tres" type="Material" id=1]
+[ext_resource path="res://assets/models/dice/d4 the win.glb" type="PackedScene" id=2]
+[ext_resource path="res://scenes/dice/d4 collision.tres" type="Shape" id=3]
+[ext_resource path="res://assets/scripts/dice/Physics d4.gd" type="Script" id=4]
+
+[node name="Physics d4" type="RigidBody"]
+script = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = ExtResource( 3 )
+
+[node name="d4 the win" parent="." instance=ExtResource( 2 )]
+
+[node name="D4" parent="d4 the win" index="0"]
+material/0 = ExtResource( 1 )
+
+[editable path="d4 the win"]
