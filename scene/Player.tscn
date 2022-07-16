@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/scripts/generics/dice_container.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/enemies/HWalker.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/scripts/untils/object_spawner.gd" type="Script" id=9]
 [ext_resource path="res://scenes/enemies/Follower.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=11]
 
 [sub_resource type="BoxShape" id=3]
 
@@ -26,6 +27,7 @@ collision_mask = 5
 script = ExtResource( 1 )
 dice_container_path = NodePath("DiceContainer")
 lazer_path = NodePath("lazer")
+dice_display_label_path = NodePath("Control/Label")
 
 [node name="DiceContainer" type="Node" parent="Player"]
 script = ExtResource( 2 )
@@ -67,6 +69,19 @@ objects = [ ExtResource( 8 ), ExtResource( 10 ) ]
 radius = 20.0
 
 [node name="enemy_spawn_timer" type="Timer" parent="Player/ObjectSpawner"]
-autostart = true
 
+[node name="Control" type="Control" parent="Player"]
+anchor_right = 1.0
+anchor_bottom = 0.062
+theme = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="Player/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Test text "
+align = 2
+valign = 1
+uppercase = true
+
+[connection signal="on_dice_add" from="Player/DiceContainer" to="Player" method="_on_DiceContainer_on_dice_add"]
 [connection signal="timeout" from="Player/ObjectSpawner/enemy_spawn_timer" to="Player/ObjectSpawner" method="_on_enemy_spawn_timer_timeout"]

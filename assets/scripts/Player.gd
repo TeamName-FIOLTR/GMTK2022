@@ -7,7 +7,8 @@ export(NodePath) var camera_path : NodePath
 onready var cam : Camera = get_node(camera_path)
 export(NodePath) var lazer_path : NodePath
 onready var lazer : Lazer = get_node(lazer_path)
-
+export(NodePath) var dice_display_label_path : NodePath
+onready var dice_label : Label = get_node(dice_display_label_path) as Label
 
 export(Vector2) var movement_vector
 export(Vector2) var point_vector setget set_point_vector
@@ -17,9 +18,14 @@ export(float) var speed = 10
 export(Vector3) var linear_velocity : Vector3
 
 export (bool) var y_lock : bool = true
+
+
+
+
 var y_lock_val : float = 0.0
 
 func _ready()->void:
+	dice_label.text = dice_container.get_dice_container_str()
 	add_to_group("player")
 	if y_lock:
 		y_lock_val = translation.y
@@ -108,7 +114,6 @@ func take_power(power : DicePower,damage_up : int)->void:
 	add_child(power)
 	
 	dice_container.add_dice_from_number(damage_up,self)
-	
 #sets up the ui to ask if we want to take the power
 func ask_power(power : DicePower,damage_up : int)->void:
 	#query the user wether or not they want to confirm
@@ -118,3 +123,7 @@ func ask_power(power : DicePower,damage_up : int)->void:
 	$"Power Title".dice_power = power
 	$"Power Title".damage_increase = damage_up
 	$"Power Title".visible = true
+
+
+func _on_DiceContainer_on_dice_add():
+	dice_label.text = dice_container.get_dice_container_str()

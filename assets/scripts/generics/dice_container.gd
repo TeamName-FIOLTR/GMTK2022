@@ -5,7 +5,12 @@ extends Node
 #is rolled
 
 class_name DiceContainer
+
+signal on_dice_add
+
+
 var dice_array : Array
+
 func _ready():
 	for node in get_children():
 		(node as Dice).roller = get_parent()
@@ -24,7 +29,7 @@ func get_dice_container_str()->String:
 	var ret_str : String
 	
 	for key in dice_counts:
-		ret_str += str(dice_counts[key]) + "d" + str(key) + " "
+		ret_str += str(dice_counts[key]) + "D" + str(key) + " "
 	
 	return ret_str
 
@@ -53,6 +58,7 @@ func add_dice_from_number(max_sides : int,roller = null)->void:
 func add_dice(d : Dice)->void:
 	d.owner = self
 	add_child(d)
+	emit_signal("on_dice_add")
 
 func remove_dice(d : Dice)->void:
 	remove_child(d)
