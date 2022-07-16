@@ -20,6 +20,7 @@ export (bool) var y_lock : bool = true
 var y_lock_val : float = 0.0
 
 func _ready()->void:
+	add_to_group("player")
 	if y_lock:
 		y_lock_val = translation.y
 #is true if the mouse is in the game

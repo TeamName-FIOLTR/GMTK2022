@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/scripts/generics/dice_container.gd" type="Script" id=1]
+[ext_resource path="res://assets/scripts/enemies/Follower.gd" type="Script" id=2]
+[ext_resource path="res://scenes/dice/Physics d6.tscn" type="PackedScene" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://scenes/ray_cast_lazer.tscn" type="PackedScene" id=5]
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.0
+
+[node name="Walker" type="Spatial"]
+script = ExtResource( 2 )
+dice_container_path = NodePath("dice")
+gun_path = NodePath("art/flat_art/gun")
+
+[node name="dice" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="phys_dice" parent="." instance=ExtResource( 3 )]
+collision_layer = 4
+physics_material_override = SubResource( 1 )
+axis_lock_linear_y = true
+linear_velocity = Vector3( -10, 0, 0 )
+linear_damp = 0.0
+freash_dice = false
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="phys_dice"]
+aabb = AABB( -0.757, -0.743, -0.756, 1.511, 1.475, 1.519 )
+
+[node name="art" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="flat_art" type="Spatial" parent="art"]
+
+[node name="face" type="Spatial" parent="art/flat_art"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03766, 0, -0.00485374 )
+
+[node name="Sprite3D" type="Sprite3D" parent="art/flat_art/face"]
+transform = Transform( -1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 0.0736389, 0, 0 )
+texture = ExtResource( 4 )
+
+[node name="gun" parent="art/flat_art" instance=ExtResource( 5 )]
+transform = Transform( 4.18652, 0, 3.32704e-08, 0, 1, 0, -1.39287e-07, 0, 1, 1.04065, 0, -4.54884e-08 )
+visible = false
+force = 1.0
+collision_mask = 3
+container_path = NodePath("../../..")
+length = 4.18652
+
+[connection signal="body_entered" from="phys_dice" to="." method="_on_phys_dice_body_entered"]
+[connection signal="camera_exited" from="phys_dice/VisibilityNotifier" to="." method="_on_VisibilityNotifier_camera_exited"]

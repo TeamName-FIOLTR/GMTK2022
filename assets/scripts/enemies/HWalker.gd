@@ -28,13 +28,18 @@ func _process(delta):
 		$art/flat_art.rotation.y = -atan2(-$phys_dice.linear_velocity.x,$phys_dice.linear_velocity.z)
 
 func take_damage(amount : int, source : Spatial)->void:
-
 	if $phys_dice.rolled:
 		#unlock the roll EXPLOSIVLY
 		var collision_vec : Vector3 = ($phys_dice.global_transform.origin - source.global_transform.origin).normalized()*gun.force*10
 		$phys_dice.linear_velocity = collision_vec
+		print("EXPLOSION VELOCITY")
+		print($phys_dice.linear_velocity)
 		$phys_dice.roll(gun.force*10)
 	else:
 		$phys_dice.snap_normal()
 		$phys_dice.mode = RigidBody.MODE_RIGID
 		.take_damage(amount,source)
+
+
+func _on_physics_dice_body_entered(body):
+	pass # Replace with function body.
