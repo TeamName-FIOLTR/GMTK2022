@@ -92,8 +92,17 @@ func _notification(what):
 func _input(event):
 	if (event is InputEventKey or event is InputEventJoypadMotion):
 		movement_vector = Input.get_vector("move_left","move_right","move_down","move_up")
+
 func hit_target(target):
 	target = target.get_parent()
 	if target.has_method("take_damage"):
 		print("DEALING DAMAGE TO " + target.name)
 		target.take_damage(dice_container.roll(),self)
+
+func take_power(power : DicePower)->void:
+	if power.get_parent():
+		power.get_parent().remove_child(power)
+	
+	add_child(power)
+	power.owner = self
+	power.enabled = true

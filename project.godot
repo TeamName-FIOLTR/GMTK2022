@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "DicePower",
+"class": "DebugDicePower",
+"language": "GDScript",
+"path": "res://assets/scripts/dice_powers/debug_power.gd"
+}, {
 "base": "DiceSignaler",
 "class": "Dice",
 "language": "GDScript",
@@ -58,8 +63,14 @@ _global_script_classes=[ {
 "class": "PhysicsDice",
 "language": "GDScript",
 "path": "res://assets/scripts/Physics Dice.gd"
+}, {
+"base": "Spatial",
+"class": "PowerPickup",
+"language": "GDScript",
+"path": "res://assets/scripts/generics/power pickup.gd"
 } ]
 _global_script_class_icons={
+"DebugDicePower": "",
 "Dice": "",
 "DiceContainer": "",
 "DicePower": "",
@@ -69,7 +80,8 @@ _global_script_class_icons={
 "Entity": "",
 "Gun": "",
 "Lazer": "",
-"PhysicsDice": ""
+"PhysicsDice": "",
+"PowerPickup": ""
 }
 
 [application]

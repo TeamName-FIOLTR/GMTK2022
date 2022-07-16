@@ -138,7 +138,7 @@ void light() {
 
 }
 "
-graph_offset = Vector2( 71.8522, 109.126 )
+graph_offset = Vector2( 13.6144, 325.251 )
 nodes/fragment/0/position = Vector2( 1240, 80 )
 nodes/fragment/2/node = SubResource( 10 )
 nodes/fragment/2/position = Vector2( -520, 360 )
@@ -185,4 +185,4 @@ resource_local_to_scene = true
 shader = SubResource( 19 )
 shader_param/Line_Thickness = 0.2
 shader_param/Radial_Fill = 1.0
-shader_param/Brightness = 16.0
+shader_param/Brightness = 5.0
