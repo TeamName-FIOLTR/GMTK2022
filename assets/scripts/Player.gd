@@ -98,11 +98,18 @@ func hit_target(target):
 	if target.has_method("take_damage"):
 		print("DEALING DAMAGE TO " + target.name)
 		target.take_damage(dice_container.roll(),self)
-
-func take_power(power : DicePower)->void:
+#actually takes the power
+func take_power(power : DicePower,damage_up : int)->void:
+	power.enabled = true
+	add_child(power)
+	var new_dice : Dice = Dice.new(damage_up)
+	dice_container.add_dice(new_dice)
+#sets up the ui to ask if we want to take the power
+func ask_power(power : DicePower,damage_up : int)->void:
+	#query the user wether or not they want to confirm
+	#this power
 	if power.get_parent():
 		power.get_parent().remove_child(power)
-	
-	add_child(power)
-	power.owner = self
-	power.enabled = true
+	$"Power Title".dice_power = power
+	$"Power Title".damage_increase = damage_up
+	$"Power Title".visible = true

@@ -2,6 +2,9 @@ extends Spatial
 
 #this class holds a power for the player to pick up
 class_name PowerPickup
+
+export(int) var dice_increase : int = 6
+
 var power : DicePower = null
 
 export (float) var bright : float = 10.0 setget set_bright, get_bright
@@ -35,5 +38,5 @@ func _on_Area_body_entered(body):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	match anim_name:
 		"pickup":
-			giving.take_power(power)
+			giving.ask_power(power,dice_increase)
 			queue_free()
