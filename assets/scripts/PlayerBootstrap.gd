@@ -12,6 +12,9 @@ func get_player_global_position()->Vector3:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Engine.time_scale = 1
+	Globals.player_alive = true
+	Globals.enemy_count = 0
 	$Player.cam = get_node(camera)
 	$Player/ObjectSpawner.spawn_end = get_parent()
 	$Player/ObjectSpawner2.spawn_end = get_parent()

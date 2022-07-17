@@ -115,7 +115,6 @@ dice"
 align = 1
 
 [node name="credits" type="CenterContainer" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -140,8 +139,8 @@ margin_bottom = 153.0
 custom_fonts/font = SubResource( 3 )
 text = "Dodge N Dice by Teamname:FIOLTR
 Programming: Mequam & X3K
-Art: SOON
-Music: SOON but spoon"
+Art: SueCutzy & X3K
+Music: spoon"
 align = 1
 
 [connection signal="pressed" from="main/VBoxContainer/CONTINUE" to="." method="_on_CONTINUE_pressed"]

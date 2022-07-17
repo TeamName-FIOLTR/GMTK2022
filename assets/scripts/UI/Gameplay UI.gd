@@ -39,6 +39,10 @@ func recieve_player_death():
 	$"DEATH/CenterContainer/VBoxContainer/RETRY BUTTON".grab_focus()
 	$"DEATH/CenterContainer/VBoxContainer/got %s points, tho".text = "got " + str(Globals.score) + " points tho"
 
+func recieve_player_score(score):
+	$score/Label.text = "Score: %s"%score
+	$"DEATH/CenterContainer/VBoxContainer/got %s points, tho".text = "got %s points, tho"%score
+
 func _on_RETRY_BUTTON_pressed():
 	get_tree().reload_current_scene()
 	pass # Replace with function body.
