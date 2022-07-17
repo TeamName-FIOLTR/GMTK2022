@@ -13,8 +13,8 @@ func get_ability_string():
 func get_flavor_text():
 	return "(dice2)woopsy doopsy forgot to remove debug"
 func found_miss_match_roll(d : DiceSignaler):
-	if global:
-		print("someone rolled a ", d.roll_buffer)
-	else:
-		print("we rolled a ", d.roll_buffer)
+#	if global:
+#		print("someone rolled a ", d.roll_buffer)
+#	else:
+#		print("we rolled a ", d.roll_buffer)
 	.found_miss_match_roll(d)

@@ -27,10 +27,10 @@ func update_display_data():
 
 func recieve_arbitrary_data(data, value):
 	display_data[data] = value
-func _input(event):
-	if event is InputEventKey:
-		if event.scancode == KEY_SPACE:
-			print($Player/Player/DiceContainer.get_dice_container_str())
+#func _input(event):
+#	if event is InputEventKey:
+#		if event.scancode == KEY_SPACE:
+#			print($Player/Player/DiceContainer.get_dice_container_str())
 
 func _on_Timer_timeout():
 	var n_x = 2*randf()-1

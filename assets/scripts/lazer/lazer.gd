@@ -38,7 +38,7 @@ var original_length : float
 func _ready():
 	original_length = scale.x
 	$CSGMesh2/RayCast.collision_mask = collision_mask
-	print(original_length)
+#	print(original_length)
 
 func set_time(val : float)->void:
 	time = val

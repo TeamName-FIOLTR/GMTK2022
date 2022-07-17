@@ -19,7 +19,7 @@ func get_flavor_text()->String:
 func found_matching_roll(d : DiceSignaler):
 	var parent = get_parent() 
 	if parent is Player:
-		print("roll of the power dice yeahha")
+		#print("roll of the power dice yeahha")
 		parent.take_damage(10)
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
