@@ -1,10 +1,22 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/scripts/UI/Gameplay UI.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Pxfxdisco-g1aq.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/consolab.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 39
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
 
 [node name="Gameplay UI" type="Control" groups=["Player Status Recievers"]]
 anchor_right = 1.0
@@ -12,6 +24,7 @@ anchor_bottom = 1.0
 script = ExtResource( 1 )
 
 [node name="Health" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -40,9 +53,59 @@ margin_bottom = 14.0
 custom_fonts/font = SubResource( 1 )
 text = "Health: 100.0%"
 
+[node name="DEATH" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="DEATH"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.25, 0, 0, 0.7 )
+
+[node name="CenterContainer" type="CenterContainer" parent="DEATH"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DEATH/CenterContainer"]
+margin_left = 323.0
+margin_top = 188.0
+margin_right = 701.0
+margin_bottom = 412.0
+
+[node name="DEDGE N CIDE" type="Label" parent="DEATH/CenterContainer/VBoxContainer"]
+margin_right = 378.0
+margin_bottom = 126.0
+custom_fonts/font = SubResource( 2 )
+text = "YOU
+R
+DEAD"
+align = 1
+
+[node name="DEDGE N CIDE2" type="Label" parent="DEATH/CenterContainer/VBoxContainer"]
+margin_top = 130.0
+margin_right = 378.0
+margin_bottom = 170.0
+custom_fonts/font = SubResource( 2 )
+text = "got %s points, tho"
+align = 1
+
+[node name="RETRY BUTTON" type="Button" parent="DEATH/CenterContainer/VBoxContainer"]
+margin_top = 174.0
+margin_right = 378.0
+margin_bottom = 197.0
+custom_fonts/font = SubResource( 3 )
+text = "RETRY"
+
+[node name="EXIT BUTTON" type="Button" parent="DEATH/CenterContainer/VBoxContainer"]
+margin_top = 201.0
+margin_right = 378.0
+margin_bottom = 224.0
+custom_fonts/font = SubResource( 3 )
+text = "EXIT GAME"
+
 [node name="random" type="Label" parent="."]
 visible = false
-margin_left = 396.0
-margin_top = 271.0
-margin_right = 436.0
-margin_bottom = 285.0
+margin_left = 512.0
+margin_top = 293.0
+margin_right = 512.0
+margin_bottom = 307.0
