@@ -15,7 +15,7 @@ func get_ability_string()->String:
 	return "When you roll a " + get_numeric_targets() + " you will only take 80% of damage"
 
 func get_flavor_text()->String:
-	return "You are now Lazer Proof™*!\n\n *\"Lazer Proof\" is a marketing term and does not reflect effectiveness against lazers."
+	return "You are now Lazer Proof™*!\n\n *\"Lazer Proof\" is a marketing term and does not reflect actual effectiveness against lazers."
 func found_matching_roll(d : DiceSignaler):
 	var parent = get_parent() 
 	if parent is Player:
