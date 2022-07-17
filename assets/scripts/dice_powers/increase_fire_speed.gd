@@ -13,4 +13,4 @@ func get_flavor_text()->String:
 	return "pewpewpewpewpewpew\n-sun tzu, the art of war, probably"
 
 func found_matching_roll(d : DiceSignaler):
-	(get_parent().gun as Gun).cool_down_time -= 1
+	(get_parent().lazer as Gun).cool_down_time -= 1

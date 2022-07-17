@@ -163,3 +163,10 @@ func _i_is_player():
 	pass #Literally just here because "OOoOoo CyCLIcAl REfErANCe OoOoooO"
 		#Imagine unironically being able to check if something is also the same class
 		#Unreal do be looking kinda compitent tho í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€0_0
+
+
+func _on_survival_timer_timeout():
+	print("DIFFICULTY UP!")
+	$ObjectSpawner/enemy_spawn_timer.wait_time -= 0.5
+	if $ObjectSpawner/enemy_spawn_timer.wait_time < 0.3:
+		$ObjectSpawner/enemy_spawn_timer.wait_time = 0.3

@@ -67,9 +67,11 @@ enabled = true
 [node name="ObjectSpawner" type="Spatial" parent="Player"]
 script = ExtResource( 9 )
 objects = [ ExtResource( 8 ), ExtResource( 10 ) ]
-radius = 20.0
+radius = 100.0
+min_radius = 50.0
 
 [node name="enemy_spawn_timer" type="Timer" parent="Player/ObjectSpawner"]
+wait_time = 20.0
 
 [node name="Control" type="Control" parent="Player"]
 anchor_right = 1.0
@@ -93,6 +95,10 @@ radius = 20.0
 wait_time = 0.3
 autostart = true
 
+[node name="survival_timer" type="Timer" parent="Player"]
+autostart = true
+
 [connection signal="on_dice_add" from="Player/DiceContainer" to="Player" method="_on_DiceContainer_on_dice_add"]
 [connection signal="timeout" from="Player/ObjectSpawner/enemy_spawn_timer" to="Player/ObjectSpawner" method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="Player/ObjectSpawner2/enemy_spawn_timer" to="Player/ObjectSpawner2" method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="Player/survival_timer" to="Player" method="_on_survival_timer_timeout"]
