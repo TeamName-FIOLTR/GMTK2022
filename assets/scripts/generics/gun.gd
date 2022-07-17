@@ -4,6 +4,7 @@ extends Spatial
 class_name Gun
 
 export(float) var force : float = 20.0
+export(float) var damage : float = 10.0
 #export collision mask
 export(int,LAYERS_3D_PHYSICS) var collision_mask : int = 1
 
@@ -12,6 +13,12 @@ onready var raycast : RayCast = get_node(raycast_path)
 
 export(NodePath) var container_path : NodePath
 var container
+
+export(NodePath) var fire_sound_path : NodePath
+onready var fire_sound : AudioStreamPlayer3D = get_node(fire_sound_path)
+
+export(NodePath) var hit_sound_path : NodePath
+onready var hit_sound : AudioStreamPlayer3D = get_node(hit_sound_path)
 
 func get_collider()->Object:
 	return raycast.get_collider()
@@ -40,9 +47,14 @@ func alert_hit(col):
 #called when we want to shoot, inteanded to be
 #overloaded by the child class
 func fire():
+	fire_sound.play()
 	var col = get_collider()
 	if col:
 		container.hit_target(col)
+		if col.has_method("_i_is_player"): #ugh the fact that i have to do this makes me wish to switch to unreal
+			hit_sound.global_transform.origin = col.global_transform.origin
+			hit_sound.play()
+#			$"Hit Sound".global_transform.origin = col.global_transform.origin
 
 #turns on sights for aiming
 func aim():

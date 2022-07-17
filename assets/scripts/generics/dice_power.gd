@@ -13,7 +13,7 @@ export var enabled : bool = false
 func get_ability_string()->String:
 	return "A Default Power"
 func get_flavor_text()->String:
-	return "much wow"
+	return "much wow" # lol
 
 export(Array,int) var rolls_to_match : Array
 

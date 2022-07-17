@@ -1,6 +1,6 @@
 extends PhysicsDice
 
-
+export(Texture) var testing_texture
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -25,6 +25,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	get_tree().call_group("Arbitrary Data Recievers", "recieve_arbitrary_data", "d12 Rolled Face", get_rolled_face())
+#func _process(delta):
+#	get_tree().call_group("Arbitrary Data Recievers", "recieve_arbitrary_data", "d12 Rolled Face", get_rolled_face())
+#	var curve = Curve.new()
 #	pass

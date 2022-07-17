@@ -1,12 +1,22 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/scripts/dice/Physics d12.gd" type="Script" id=1]
 [ext_resource path="res://scenes/dice/d12 collision.tres" type="Shape" id=2]
 [ext_resource path="res://assets/materials/Dice Material.tres" type="Material" id=3]
 [ext_resource path="res://assets/models/dice/d12 moment.glb" type="PackedScene" id=4]
+[ext_resource path="res://assets/models/dice/d12 fx mesh.glb" type="PackedScene" id=5]
+[ext_resource path="res://assets/shaders/coool freaking light shader or somin.tres" type="Material" id=6]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0.3 ), 0.0, 1.56904, 0, 0, Vector2( 0.145631, 0.472727 ), 12.4068, 12.4068, 0, 0, Vector2( 0.286408, 0.345455 ), -0.0263764, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
 
 [node name="Physics d12" type="RigidBody"]
 script = ExtResource( 1 )
+cool_anim_mesh_path = NodePath("d12 fx mesh/d12 effects mesh")
+testing_texture = SubResource( 2 )
 
 [node name="d12 moment" parent="." instance=ExtResource( 4 )]
 
@@ -16,4 +26,11 @@ material/0 = ExtResource( 3 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = ExtResource( 2 )
 
+[node name="d12 fx mesh" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0 )
+
+[node name="d12 effects mesh" parent="d12 fx mesh" index="0"]
+material/0 = ExtResource( 6 )
+
 [editable path="d12 moment"]
+[editable path="d12 fx mesh"]

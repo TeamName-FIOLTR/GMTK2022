@@ -19,6 +19,19 @@ export(Vector3) var linear_velocity : Vector3
 
 export (bool) var y_lock : bool = true
 
+export(float) var health = 100 setget set_health
+export(float) var max_health = 100 setget set_max_health
+export(float) var healing_multiplier = 1
+export(float) var damaging_multiplier = 1
+
+func set_health(n_health):
+	health = n_health
+	get_tree().call_group("Player Status Recievers", "recieve_player_health", health)
+	check_death()
+
+func set_max_health(n_max):
+	health = n_max
+	get_tree().call_group("Player Status Recievers", "recieve_player_max_health", max_health)
 
 
 
@@ -124,6 +137,29 @@ func ask_power(power : DicePower,damage_up : int)->void:
 	$"Power Title".damage_increase = damage_up
 	$"Power Title".visible = true
 
+func check_death():
+	if health <= 0:
+		DEATH()
+
+func DEATH():
+	get_tree().call_group("Player Death Recievers", "recieve_player_death")
+	get_tree().call_group("Player Status Recievers", "recieve_player_death")
+
+func take_damage(damage):
+	print("took ", damage, " damage")
+	self.health -= damage*damaging_multiplier
+	get_tree().call_group("Player Status Recievers", "recieve_player_takes_damage", damage)
+
+func heal(amount):
+	self.health += amount*healing_multiplier
+	get_tree().call_group("Player Status Recievers", "recieve_player_heals", amount)
+
 
 func _on_DiceContainer_on_dice_add():
 	dice_label.text = dice_container.get_dice_container_str()
+
+
+func _i_is_player():
+	pass #Literally just here because "OOoOoo CyCLIcAl REfErANCe OoOoooO"
+		#Imagine unironically being able to check if something is also the same class
+		#Unreal do be looking kinda compitent tho í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€í ½í±€0_0

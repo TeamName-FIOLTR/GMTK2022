@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/fonts/Pxfxdisco-g1aq.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/consolab.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/scripts/UI/title/ui_title.gd" type="Script" id=2]
 [ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=3]
 
@@ -8,6 +8,12 @@
 size = 36
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
 font_data = ExtResource( 1 )
 
 [node name="TItle" type="Control"]
@@ -29,6 +35,7 @@ anchor_left = 0.25
 anchor_top = 0.2
 anchor_right = 0.75
 anchor_bottom = 0.3
+custom_fonts/font = SubResource( 7 )
 text = "+1d6 damage"
 align = 1
 valign = 1
@@ -38,6 +45,7 @@ anchor_left = 0.25
 anchor_top = 0.3
 anchor_right = 0.75
 anchor_bottom = 0.5
+custom_fonts/font = SubResource( 8 )
 text = "AAAAAAAAAAAAAH"
 align = 1
 valign = 1

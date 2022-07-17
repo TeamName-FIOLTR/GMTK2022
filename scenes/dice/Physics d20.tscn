@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/dice/d20 collision.tres" type="Shape" id=1]
 [ext_resource path="res://assets/models/dice/d20 yeah bois.glb" type="PackedScene" id=2]
 [ext_resource path="res://assets/scripts/dice/Physics d20.gd" type="Script" id=3]
 [ext_resource path="res://assets/materials/Dice Material.tres" type="Material" id=4]
+[ext_resource path="res://assets/models/dice/d20 coolio efx ywehsa.glb" type="PackedScene" id=5]
+[ext_resource path="res://assets/shaders/coool freaking light shader or somin.tres" type="Material" id=6]
 
 [node name="Physics d20" type="RigidBody"]
 script = ExtResource( 3 )
@@ -11,9 +13,17 @@ script = ExtResource( 3 )
 [node name="d20 yeah bois" parent="." instance=ExtResource( 2 )]
 
 [node name="d20" parent="d20 yeah bois" index="0"]
+material_override = ExtResource( 4 )
 material/0 = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = ExtResource( 1 )
 
+[node name="d20 coolio efx ywehsa" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0 )
+
+[node name="d20 fx meshshs" parent="d20 coolio efx ywehsa" index="0"]
+material/0 = ExtResource( 6 )
+
 [editable path="d20 yeah bois"]
+[editable path="d20 coolio efx ywehsa"]

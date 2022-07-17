@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Laser_09.wav-2768a19c2871a7b0e360e951fff6a896.sample"
+
+[deps]
+
+source_file="res://assets/sound/lazers/Laser_09.wav"
+dest_files=[ "res://.import/Laser_09.wav-2768a19c2871a7b0e360e951fff6a896.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

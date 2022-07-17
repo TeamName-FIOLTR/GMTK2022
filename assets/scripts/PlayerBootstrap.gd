@@ -15,6 +15,8 @@ func _ready():
 	$Player.cam = get_node(camera)
 	$Player/ObjectSpawner.spawn_end = get_parent()
 
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

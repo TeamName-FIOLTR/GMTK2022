@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/dice/Physics d4.tscn" type="PackedScene" id=1]
+
+[node name="Turret" type="Spatial"]
+
+[node name="Physics d4" parent="." instance=ExtResource( 1 )]
+face_normals = [ Vector3( 0.816497, -0.57735, 0 ), Vector3( -0.816497, -0.57735, 0 ), Vector3( 0, 0.57735, -0.816497 ), Vector3( 0, 0.57735, 0.816497 ) ]

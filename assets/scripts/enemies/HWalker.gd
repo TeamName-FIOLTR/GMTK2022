@@ -11,6 +11,7 @@ onready var starting_velocity = $phys_dice.linear_velocity
 
 func _ready():
 	gun.do_aim = true
+	$phys_dice.apply_torque_impulse(Vector3(randf(),randf(),randf())*30)
 
 func _on_VisibilityNotifier_camera_exited(camera):
 	if not just_left:
@@ -40,6 +41,11 @@ func take_damage(amount : int, source : Spatial)->void:
 		$phys_dice.mode = RigidBody.MODE_RIGID
 		.take_damage(amount,source)
 
+func hit_target(target):
+	if target is Player:
+		target.take_damage(gun.damage)
 
 func _on_physics_dice_body_entered(body):
 	pass # Replace with function body.
+
+

@@ -9,15 +9,19 @@ export(float) var x_follow_threshold : float = 2.0
 export(float) var z_follow_threshold : float = 2.0
 
 func _process(delta):
-	var diff : Vector3 = player.get_player_global_position()
-	diff.y = global_transform.origin.y
+	var player_pos : Vector3 = player.get_player_global_position()
+	var diff = player_pos - global_transform.origin
+#	diff.y = global_transform.origin.y
+	player_pos.y = global_transform.origin.y
 	#only do the interpolation when the player moves two far
-	if abs(diff.x - global_transform.origin.x) > x_follow_threshold:
-		var buff = diff
+	var over_x = abs(diff.x)-x_follow_threshold
+	var over_z = abs(diff.z)-z_follow_threshold
+	if abs(diff.x) > x_follow_threshold:
+		var buff = player_pos
 		buff.z = global_transform.origin.z
-		global_transform.origin = global_transform.origin.linear_interpolate(buff,camera_snap*delta)
-	if abs(diff.z - global_transform.origin.z) > z_follow_threshold:
-		var buff = diff
+		global_transform.origin = global_transform.origin.linear_interpolate(buff,camera_snap*delta*over_x)
+	if abs(diff.z) > z_follow_threshold:
+		var buff = player_pos
 		buff.x = global_transform.origin.x
-		global_transform.origin = global_transform.origin.linear_interpolate(buff,camera_snap*delta)
+		global_transform.origin = global_transform.origin.linear_interpolate(buff,camera_snap*delta*over_z)
 		

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/scripts/enemies/Spinner.gd" type="Script" id=1]
+[ext_resource path="res://scenes/dice/Physics d8.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/scripts/generics/dice_container.gd" type="Script" id=3]
+
+[node name="Spinner" type="Spatial"]
+script = ExtResource( 1 )
+dice_container_path = NodePath("dice")
+starting_hp = 0
+
+[node name="phys_dice" parent="." instance=ExtResource( 2 )]
+contacts_reported = 3
+contact_monitor = true
+axis_lock_linear_y = true
+angular_velocity = Vector3( 0, 200.973, 0 )
+angular_damp = 0.0
+radial_reveal = 0.0
+
+[node name="art" type="Spatial" parent="."]
+
+[node name="dice" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[connection signal="body_entered" from="phys_dice" to="." method="_on_phys_dice_body_entered"]

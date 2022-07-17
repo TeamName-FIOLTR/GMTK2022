@@ -11,7 +11,7 @@ func get_ability_string():
 		return "print all rolls not in " + str(rolls_to_match)
 	return "print all rolls"
 func get_flavor_text():
-	return "woopsy doopsy forgot to remove debug"
+	return "(dice2)woopsy doopsy forgot to remove debug"
 func found_miss_match_roll(d : DiceSignaler):
 	if global:
 		print("someone rolled a ", d.roll_buffer)

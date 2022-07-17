@@ -7,7 +7,7 @@ func main_ready()->void:
 func get_ability_string()->String:
 	return "when YOU roll the highest number on a dice,\n gain another damge dice of that type"
 func get_flavor_text()->String:
-	return "dice dice dice dice dice...."
+	return "(dice3)dice dice dice dice dice...."
 func power(d : DiceSignaler)->void:
 	if d is Dice:
 		if d.roll_buffer == d.dice_type:

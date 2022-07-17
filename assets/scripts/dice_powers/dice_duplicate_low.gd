@@ -7,7 +7,7 @@ func main_ready()->void:
 func get_ability_string()->String:
 	return "when YOU roll a 1 on a dice,\n gain a damge dice of that type"
 func get_flavor_text()->String:
-	return "dice dice dice dice dice...."
+	return "(dice1)dice dice dice dice dice...."
 func power(d : DiceSignaler)->void:
 	if d is Dice:
 		if d.roll_buffer == 1:

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/scripts/dice/Physics d8.gd" type="Script" id=1]
 [ext_resource path="res://scenes/dice/d8 collision.tres" type="Shape" id=2]
 [ext_resource path="res://assets/materials/Dice Material.tres" type="Material" id=3]
 [ext_resource path="res://assets/models/dice/d8 nite.glb" type="PackedScene" id=4]
+[ext_resource path="res://assets/models/dice/d8 cool effects mesh.glb" type="PackedScene" id=5]
+[ext_resource path="res://assets/shaders/coool freaking light shader or somin.tres" type="Material" id=6]
 
 [node name="Physics d8" type="RigidBody"]
 script = ExtResource( 1 )
@@ -16,4 +18,11 @@ material/0 = ExtResource( 3 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = ExtResource( 2 )
 
+[node name="d8 cool effects mesh" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0 )
+
+[node name="d8fx" parent="d8 cool effects mesh" index="0"]
+material/0 = ExtResource( 6 )
+
 [editable path="d8 nite"]
+[editable path="d8 cool effects mesh"]
