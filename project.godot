@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "DicePower",
+"class": "AddD20DicePower",
+"language": "GDScript",
+"path": "res://assets/scripts/dice_powers/d20DicePower.gd"
+}, {
 "base": "Spatial",
 "class": "BootstrapPlayer",
 "language": "GDScript",
 "path": "res://assets/scripts/PlayerBootstrap.gd"
+}, {
+"base": "DicePower",
+"class": "DamageOnLessThanZeroDP",
+"language": "GDScript",
+"path": "res://assets/scripts/dice_powers/damageWithZeroDP.gd"
 }, {
 "base": "DicePower",
 "class": "DebugDicePower",
@@ -64,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scripts/generics/dice_power.gd"
 }, {
+"base": "DicePower",
+"class": "DicePowerIncreaseFireSpeed",
+"language": "GDScript",
+"path": "res://assets/scripts/dice_powers/increase_fire_speed.gd"
+}, {
 "base": "Node",
 "class": "DiceSignaler",
 "language": "GDScript",
@@ -88,6 +103,11 @@ _global_script_classes=[ {
 "class": "Entity",
 "language": "GDScript",
 "path": "res://assets/scripts/generics/RigidBody.gd"
+}, {
+"base": "DicePower",
+"class": "GlobalPowerIncreaseDP",
+"language": "GDScript",
+"path": "res://assets/scripts/dice_powers/global_incriment_power.gd"
 }, {
 "base": "Spatial",
 "class": "Gun",
@@ -128,9 +148,16 @@ _global_script_classes=[ {
 "class": "PowerPickup",
 "language": "GDScript",
 "path": "res://assets/scripts/generics/power pickup.gd"
+}, {
+"base": "DicePower",
+"class": "SelfDecreasePowerDP",
+"language": "GDScript",
+"path": "res://assets/scripts/dice_powers/selfDecreasePower.gd"
 } ]
 _global_script_class_icons={
+"AddD20DicePower": "",
 "BootstrapPlayer": "",
+"DamageOnLessThanZeroDP": "",
 "DebugDicePower": "",
 "Dice": "",
 "DiceContainer": "",
@@ -141,11 +168,13 @@ _global_script_class_icons={
 "DiceHealingDecreaseDicePower": "",
 "DiceHealingIncreaseDicePower": "",
 "DicePower": "",
+"DicePowerIncreaseFireSpeed": "",
 "DiceSignaler": "",
 "Enemy": "",
 "EnemyFollower": "",
 "EnemyHWalker": "",
 "Entity": "",
+"GlobalPowerIncreaseDP": "",
 "Gun": "",
 "Lazer": "",
 "MaxDuplicateDicePower": "",
@@ -153,7 +182,8 @@ _global_script_class_icons={
 "ObjectSpawner": "",
 "PhysicsDice": "",
 "Player": "",
-"PowerPickup": ""
+"PowerPickup": "",
+"SelfDecreasePowerDP": ""
 }
 
 [application]

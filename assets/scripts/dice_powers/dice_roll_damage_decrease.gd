@@ -12,7 +12,7 @@ class_name DiceDamageDecreaseDicePower
 func _ready():
 	pass # Replace with function body.
 func get_ability_string()->String:
-	return "When you roll a number, you will only take 80% of damage"
+	return "When you roll a " + get_numeric_targets() + " you will only take 80% of damage"
 
 func get_flavor_text()->String:
 	return "You are now Lazer Proof™*!\n\n *\"Lazer Proof\" is a marketing term and does not reflect effectiveness against lazers."

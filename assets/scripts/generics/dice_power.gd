@@ -17,6 +17,15 @@ func get_flavor_text()->String:
 
 export(Array,int) var rolls_to_match : Array
 
+func get_numeric_targets()->String:
+	if len(rolls_to_match) == 1:
+		return str(rolls_to_match[0])
+	var ret_val = ""
+	for roll in rolls_to_match:
+		ret_val += str(roll) + ","
+	
+	#chop off the last ,
+	return ret_val.substr(0,len(ret_val)-1)
 
 #this function is inteanded to be called whenever
 #a dice whose value matches the given values is rolled

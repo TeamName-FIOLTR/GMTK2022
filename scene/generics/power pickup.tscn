@@ -1,7 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/scripts/generics/power pickup.gd" type="Script" id=1]
 [ext_resource path="res://scene/art/d6_outline.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/scripts/dice_powers/dice_roll_damage_decrease.gd" type="Script" id=3]
+[ext_resource path="res://assets/scripts/dice_powers/increase_fire_speed.gd" type="Script" id=4]
+[ext_resource path="res://assets/scripts/dice_powers/dice_roll_heal.gd" type="Script" id=5]
+[ext_resource path="res://assets/scripts/dice_powers/dice_duplicate_low.gd" type="Script" id=6]
+[ext_resource path="res://assets/scripts/dice_powers/global_incriment_power.gd" type="Script" id=7]
+[ext_resource path="res://assets/scripts/dice_powers/selfDecreasePower.gd" type="Script" id=8]
+[ext_resource path="res://assets/scripts/dice_powers/damageWithZeroDP.gd" type="Script" id=9]
+[ext_resource path="res://assets/scripts/dice_powers/d20DicePower.gd" type="Script" id=10]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -116,7 +124,6 @@ extents = Vector3( 2, 2, 2 )
 
 [node name="power pickup" type="Spatial"]
 script = ExtResource( 1 )
-bright = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../art")
@@ -137,6 +144,36 @@ collision_mask = 4
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 shape = SubResource( 5 )
+
+[node name="DiceDamageDecreaseDicePower" type="Node" parent="."]
+script = ExtResource( 3 )
+rolls_to_match = [ 3, 6, 9 ]
+
+[node name="DicePowerIncreaseFireSpeed" type="Node" parent="."]
+script = ExtResource( 4 )
+rolls_to_match = [ 1, 6 ]
+
+[node name="DiceHealDicePower" type="Node" parent="."]
+script = ExtResource( 5 )
+rolls_to_match = [ 3, 6, 9 ]
+
+[node name="MinDuplicationDicePower" type="Node" parent="."]
+script = ExtResource( 6 )
+rolls_to_match = [ 1 ]
+
+[node name="GlobalPowerIncreaseDP" type="Node" parent="."]
+script = ExtResource( 7 )
+global = true
+rolls_to_match = [ 5, 4 ]
+
+[node name="SelfDecreasePowerDP" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[node name="DamageOnLessThanZeroDP" type="Node" parent="."]
+script = ExtResource( 9 )
+
+[node name="AddD20DicePower" type="Node" parent="."]
+script = ExtResource( 10 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

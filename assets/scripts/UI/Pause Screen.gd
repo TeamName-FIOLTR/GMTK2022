@@ -10,7 +10,7 @@ export(NodePath) var how_2_play_menu
 func _ready():
 	get_tree().paused = visible
 	$main/VBoxContainer/CONTINUE.grab_focus()
-	pass # Replace with function body.
+	seed(OS.get_unix_time())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

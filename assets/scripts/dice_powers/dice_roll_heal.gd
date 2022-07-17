@@ -12,10 +12,10 @@ class_name DiceHealDicePower
 func _ready():
 	pass # Replace with function body.
 func get_ability_string()->String:
-	return "When you roll a number, you will heal 10 Health"
+	return "When you roll " + get_numeric_targets() + " you will heal 10 Health"
 
 func get_flavor_text()->String:
-	return "It looks like today is your Lucky Day!"
+	return "woooooow baby a triple :D"
 func found_matching_roll(d : DiceSignaler):
 	var parent = get_parent() 
 	if parent is Player:
