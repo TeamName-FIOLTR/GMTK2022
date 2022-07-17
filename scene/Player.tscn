@@ -47,6 +47,7 @@ material = SubResource( 2 )
 
 [node name="lazer" parent="Player" instance=ExtResource( 3 )]
 transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.512689, 0 )
+force = 1.0
 collision_mask = 5
 container_path = NodePath("..")
 player_controled = true
