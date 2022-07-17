@@ -34,6 +34,7 @@ func recieve_player_max_health(max_health):
 func recieve_player_death():
 #	Engine.time_scale = 0.2
 	$DEATH.visible = true
+	$AudioStreamPlayer.play()
 	$AnimationPlayer.play("DEATH")
 	$"DEATH/CenterContainer/VBoxContainer/RETRY BUTTON".grab_focus()
 

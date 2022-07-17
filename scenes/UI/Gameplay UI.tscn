@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/scripts/UI/Gameplay UI.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Pxfxdisco-g1aq.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/fonts/consolab.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/sound/WarpDrive_00.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
@@ -221,6 +222,9 @@ margin_bottom = 307.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/DEATH = SubResource( 4 )
 anims/RESET = SubResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="pressed" from="DEATH/CenterContainer/VBoxContainer/RETRY BUTTON" to="." method="_on_RETRY_BUTTON_pressed"]
 [connection signal="pressed" from="DEATH/CenterContainer/VBoxContainer/EXIT BUTTON" to="." method="_on_EXIT_BUTTON_pressed"]
