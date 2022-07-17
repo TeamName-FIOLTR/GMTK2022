@@ -9,7 +9,7 @@
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
 
-[node name="Walker" type="Spatial"]
+[node name="Walker2" type="Spatial"]
 script = ExtResource( 2 )
 dice_container_path = NodePath("dice")
 starting_hp = 2

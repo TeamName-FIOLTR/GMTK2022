@@ -8,6 +8,8 @@ onready var dice_container : Node = get_node(dice_container_path)
 export var starting_hp : int = 6
 var hp : int
 
+var deathSound = preload("res://scenes/audio/deathThwack.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Globals.enemy_count += 1
@@ -27,10 +29,15 @@ func _process(delta):
 	$art.translation = $phys_dice.translation
 
 func die():
+	
 	queue_free()
 
 func queue_free():
 	Globals.enemy_count -= 1
+	var ds : AudioStreamPlayer3D = deathSound.instance()
+	
+	ds.global_transform = $phys_dice.global_transform
+	get_parent().add_child(ds)
 	.queue_free()
 func take_damage(amount : int, src: Spatial)->void:
 	hp -= amount

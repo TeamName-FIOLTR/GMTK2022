@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/thwack-05.wav-d3be202af5cca8d83f7b2bd302e7b8ae.sample"
+
+[deps]
+
+source_file="res://assets/sound/PCM/thwack-05.wav"
+dest_files=[ "res://.import/thwack-05.wav-d3be202af5cca8d83f7b2bd302e7b8ae.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/sound/PCM/thwack-01.wav" type="AudioStream" id=1]
+[ext_resource path="res://assets/scripts/sound/deathThwack.gd" type="Script" id=2]
+
+[node name="deathEffect" type="AudioStreamPlayer3D"]
+stream = ExtResource( 1 )
+unit_db = 28.0
+autoplay = true
+script = ExtResource( 2 )
+
+[node name="death_timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]

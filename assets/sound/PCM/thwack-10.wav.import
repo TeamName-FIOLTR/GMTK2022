@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/thwack-10.wav-ab88d0b77ca566bfc1aba4185d8aa897.sample"
+
+[deps]
+
+source_file="res://assets/sound/PCM/thwack-10.wav"
+dest_files=[ "res://.import/thwack-10.wav-ab88d0b77ca566bfc1aba4185d8aa897.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
