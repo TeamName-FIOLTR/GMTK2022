@@ -1,12 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/scripts/UI/Gameplay UI.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/Pxfxdisco-g1aq.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=2]
 [ext_resource path="res://assets/fonts/consolab.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/sound/WarpDrive_00.wav" type="AudioStream" id=4]
-
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 39
@@ -129,20 +126,22 @@ tracks/4/keys = {
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 2 )
 script = ExtResource( 1 )
-timey_scale = 0.0
 
 [node name="Health" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 0.039
+anchor_bottom = 0.067
+margin_right = 0.0639992
+margin_bottom = -0.200001
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Health"]
 anchor_right = 5.666
-anchor_bottom = 0.927
+anchor_bottom = 0.349
 
 [node name="Bar" type="Control" parent="Health/VBoxContainer"]
 margin_right = 226.0
-margin_bottom = 33.0
+margin_bottom = 9.0
 size_flags_vertical = 3
 
 [node name="ColorRect" type="ColorRect" parent="Health/VBoxContainer/Bar"]
@@ -151,14 +150,13 @@ anchor_bottom = 1.0
 color = Color( 1, 0, 0, 1 )
 
 [node name="Text" type="Control" parent="Health/VBoxContainer"]
-margin_top = 37.0
+margin_top = 13.0
 margin_right = 226.0
-margin_bottom = 37.0
+margin_bottom = 13.0
 
 [node name="Label" type="Label" parent="Health/VBoxContainer/Text"]
 margin_right = 40.0
 margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
 text = "Health: 100.0%"
 
 [node name="DEATH" type="Control" parent="."]
@@ -211,6 +209,16 @@ margin_right = 378.0
 margin_bottom = 224.0
 custom_fonts/font = SubResource( 3 )
 text = "EXIT GAME"
+
+[node name="score" type="Control" parent="."]
+anchor_top = 0.067
+anchor_right = 0.122
+anchor_bottom = 0.109
+
+[node name="Label" type="Label" parent="score"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Score: 0"
 
 [node name="random" type="Label" parent="."]
 visible = false

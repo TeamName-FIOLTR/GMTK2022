@@ -194,7 +194,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Globals="*res://assets/scripts/autoloads/globals.gd"
+Globals="*res://scenes/globals/Globals.tscn"
 
 [global]
 

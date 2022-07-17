@@ -37,7 +37,7 @@ func recieve_player_death():
 	$AudioStreamPlayer.play()
 	$AnimationPlayer.play("DEATH")
 	$"DEATH/CenterContainer/VBoxContainer/RETRY BUTTON".grab_focus()
-
+	$"DEATH/CenterContainer/VBoxContainer/got %s points, tho".text = "got " + str(Globals.score) + " points tho"
 
 func _on_RETRY_BUTTON_pressed():
 	get_tree().reload_current_scene()
