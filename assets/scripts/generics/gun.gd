@@ -29,7 +29,6 @@ func set_cool_down_time(val : float)->void:
 		val = 0.1
 	cool_down_time = val
 	$cool_down.wait_time = val
-	print("chainging wait time!")
 	if $cool_down.wait_time < 0.001:
 		
 		$cool_down.wait_time = 0.001
