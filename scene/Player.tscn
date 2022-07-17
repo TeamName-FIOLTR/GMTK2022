@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/scripts/generics/dice_container.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/scripts/untils/object_spawner.gd" type="Script" id=9]
 [ext_resource path="res://scenes/enemies/Follower.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/themes/main_theme.tres" type="Theme" id=11]
+[ext_resource path="res://scene/generics/power pickup.tscn" type="PackedScene" id=12]
 
 [sub_resource type="BoxShape" id=3]
 
@@ -45,7 +46,7 @@ mesh = SubResource( 1 )
 material = SubResource( 2 )
 
 [node name="lazer" parent="Player" instance=ExtResource( 3 )]
-transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.512689, 0 )
 collision_mask = 5
 container_path = NodePath("..")
 player_controled = true
@@ -83,5 +84,15 @@ align = 2
 valign = 1
 uppercase = true
 
+[node name="ObjectSpawner2" type="Spatial" parent="Player"]
+script = ExtResource( 9 )
+objects = [ ExtResource( 12 ) ]
+radius = 20.0
+
+[node name="enemy_spawn_timer" type="Timer" parent="Player/ObjectSpawner2"]
+wait_time = 0.3
+autostart = true
+
 [connection signal="on_dice_add" from="Player/DiceContainer" to="Player" method="_on_DiceContainer_on_dice_add"]
 [connection signal="timeout" from="Player/ObjectSpawner/enemy_spawn_timer" to="Player/ObjectSpawner" method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="Player/ObjectSpawner2/enemy_spawn_timer" to="Player/ObjectSpawner2" method="_on_enemy_spawn_timer_timeout"]

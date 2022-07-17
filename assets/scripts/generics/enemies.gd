@@ -11,6 +11,7 @@ var hp : int
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hp = starting_hp
+	add_to_group("enemy")
 
 #called when we hit a target
 func hit_target(target)->void:
