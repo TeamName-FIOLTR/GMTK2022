@@ -42,6 +42,7 @@ func _ready()->void:
 	add_to_group("player")
 	if y_lock:
 		y_lock_val = translation.y
+	Globals.score = 0
 #is true if the mouse is in the game
 var mouse_in : bool = false
 
@@ -144,6 +145,7 @@ func check_death():
 func DEATH():
 	get_tree().call_group("Player Death Recievers", "recieve_player_death")
 	get_tree().call_group("Player Status Recievers", "recieve_player_death")
+	Globals.player_alive = false
 
 func take_damage(damage):
 	print("took ", damage, " damage")
