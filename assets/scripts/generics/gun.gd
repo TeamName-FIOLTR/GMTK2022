@@ -23,12 +23,16 @@ onready var hit_sound : AudioStreamPlayer3D = get_node(hit_sound_path)
 func get_collider()->Object:
 	return raycast.get_collider()
 
-var cool_down_time : float = 1.0 setget set_cool_down_time, get_cool_down_time
+export(float) var cool_down_time : float = 1.0 setget set_cool_down_time, get_cool_down_time
 func set_cool_down_time(val : float)->void:
+	if val < 0.1:
+		val = 0.1
 	cool_down_time = val
-	$cool_down.wait_time = cool_down_time
-	if $cool_down.wait_time < 0.01:
-		$cool_down.wait_time = 0.01
+	$cool_down.wait_time = val
+	print("chainging wait time!")
+	if $cool_down.wait_time < 0.001:
+		
+		$cool_down.wait_time = 0.001
 func get_cool_down_time()->float:
 	return $cool_down.wait_time
 

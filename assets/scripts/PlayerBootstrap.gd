@@ -16,7 +16,6 @@ func _ready():
 	$Player/ObjectSpawner.spawn_end = get_parent()
 	$Player/ObjectSpawner2.spawn_end = get_parent()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

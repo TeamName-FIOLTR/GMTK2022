@@ -43,7 +43,7 @@ func _ready()->void:
 	if y_lock:
 		y_lock_val = translation.y
 #is true if the mouse is in the game
-var mouse_in : bool = false
+var mouse_in : bool = true
 
 func set_point_vector(n_vector : Vector2):
 	point_vector = n_vector.normalized()
@@ -142,6 +142,7 @@ func check_death():
 		DEATH()
 
 func DEATH():
+	$"Power Title".visible = false
 	get_tree().call_group("Player Death Recievers", "recieve_player_death")
 	get_tree().call_group("Player Status Recievers", "recieve_player_death")
 

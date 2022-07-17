@@ -50,6 +50,7 @@ transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.512689, 0 )
 force = 1.0
 collision_mask = 5
 container_path = NodePath("..")
+cool_down_time = 0.5
 player_controled = true
 length = 100.0
 
@@ -59,11 +60,9 @@ visible = false
 [node name="DebugDicePower" type="Node" parent="Player"]
 script = ExtResource( 7 )
 global = true
-enabled = true
 
 [node name="DebugDicePower2" type="Node" parent="Player"]
 script = ExtResource( 7 )
-enabled = true
 
 [node name="ObjectSpawner" type="Spatial" parent="Player"]
 script = ExtResource( 9 )

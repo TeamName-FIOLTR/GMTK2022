@@ -16,7 +16,13 @@ func set_color(val : Color)->void:
 	color = val
 func get_color()->Color:
 	return color 
-
+func set_cool_down_time(val : float)->void:
+	.set_cool_down_time(val)
+	if val < 0.2:
+		val = 0.2
+	$AnimationPlayer.playback_speed = 0.5/val
+	if $AnimationPlayer.playback_speed < 0.1:
+		$AnimationPlayer.playback_speed = 0.1
 
 #convienence function to get the length of the lazer
 export var length : float = 1 setget set_length, get_length
@@ -55,7 +61,7 @@ func _process(delta):
 func fire()->void:
 	visible = true
 	self.color = Color.red
-	if self.get_node("AnimationPlayer").current_animation != "fire_main":
+	if cool_down_time > 0.1 and self.get_node("AnimationPlayer").current_animation != "fire_main":
 		self.get_node("AnimationPlayer").play("fire_main")
 	.fire()
 

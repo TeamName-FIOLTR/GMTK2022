@@ -12,6 +12,7 @@ friction = 0.0
 [node name="Walker" type="Spatial"]
 script = ExtResource( 2 )
 dice_container_path = NodePath("dice")
+starting_hp = 2
 gun_path = NodePath("art/flat_art/gun")
 
 [node name="dice" type="Node" parent="."]
