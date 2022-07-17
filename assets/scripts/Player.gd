@@ -148,7 +148,7 @@ func DEATH():
 	Globals.player_alive = false
 
 func take_damage(damage):
-	print("took ", damage, " damage")
+#	print("took ", damage, " damage")
 	self.health -= damage*damaging_multiplier
 	get_tree().call_group("Player Status Recievers", "recieve_player_takes_damage", damage)
 
