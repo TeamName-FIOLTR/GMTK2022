@@ -36,3 +36,6 @@ func _process(delta):
 
 func recieve_player_takes_damage(damage):
 	shaking_amount += shake_amount*damage/3
+
+func recieve_player_deals_damage(damage):
+	shaking_amount += shake_amount
