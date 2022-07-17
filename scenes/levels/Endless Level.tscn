@@ -20,6 +20,7 @@ extents = Vector3( 1, 100, 100 )
 [node name="Endless Level" type="Spatial"]
 
 [node name="Gameplay UI" parent="." instance=ExtResource( 8 )]
+timey_scale = 1.0
 
 [node name="player" parent="." instance=ExtResource( 1 )]
 camera = NodePath("../Camera")

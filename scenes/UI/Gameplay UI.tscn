@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/scripts/UI/Gameplay UI.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Pxfxdisco-g1aq.ttf" type="DynamicFontData" id=2]
@@ -18,13 +18,120 @@ outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
+[sub_resource type="Animation" id=4]
+resource_name = "DEATH"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("DEATH/CenterContainer:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("DEATH/CenterContainer:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("DEATH/CenterContainer:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("DEATH/CenterContainer:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath(".:timey_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.001, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("DEATH/CenterContainer:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("DEATH/CenterContainer:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("DEATH/CenterContainer:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("DEATH/CenterContainer:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath(".:timey_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
 [node name="Gameplay UI" type="Control" groups=["Player Status Recievers"]]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+timey_scale = 0.0
 
 [node name="Health" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -54,6 +161,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Health: 100.0%"
 
 [node name="DEATH" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -72,7 +180,7 @@ margin_top = 188.0
 margin_right = 701.0
 margin_bottom = 412.0
 
-[node name="DEDGE N CIDE" type="Label" parent="DEATH/CenterContainer/VBoxContainer"]
+[node name="YOU ARE DEAD" type="Label" parent="DEATH/CenterContainer/VBoxContainer"]
 margin_right = 378.0
 margin_bottom = 126.0
 custom_fonts/font = SubResource( 2 )
@@ -81,7 +189,7 @@ R
 DEAD"
 align = 1
 
-[node name="DEDGE N CIDE2" type="Label" parent="DEATH/CenterContainer/VBoxContainer"]
+[node name="got %s points, tho" type="Label" parent="DEATH/CenterContainer/VBoxContainer"]
 margin_top = 130.0
 margin_right = 378.0
 margin_bottom = 170.0
@@ -109,3 +217,11 @@ margin_left = 512.0
 margin_top = 293.0
 margin_right = 512.0
 margin_bottom = 307.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/DEATH = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+
+[connection signal="pressed" from="DEATH/CenterContainer/VBoxContainer/RETRY BUTTON" to="." method="_on_RETRY_BUTTON_pressed"]
+[connection signal="pressed" from="DEATH/CenterContainer/VBoxContainer/EXIT BUTTON" to="." method="_on_EXIT_BUTTON_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
