@@ -120,7 +120,9 @@ func _input(event):
 func hit_target(target):
 	target = target.get_parent()
 	if target.has_method("take_damage"):
-		target.take_damage(dice_container.roll(),self)
+		var delt_damage = dice_container.roll()
+		target.take_damage(delt_damage,self)
+		get_tree().call_group("Player Status Recievers", "recieve_player_deals_damage", delt_damage)
 
 #actually takes the power
 func take_power(power : DicePower,damage_up : int)->void:
