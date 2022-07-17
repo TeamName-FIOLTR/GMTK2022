@@ -192,6 +192,10 @@ config/name="GMTK2022"
 run/main_scene="res://scenes/levels/Endless Level.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://assets/scripts/autoloads/globals.gd"
+
 [global]
 
 damp=false

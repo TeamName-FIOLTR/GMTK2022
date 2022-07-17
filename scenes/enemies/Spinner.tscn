@@ -7,7 +7,6 @@
 [node name="Spinner" type="Spatial"]
 script = ExtResource( 1 )
 dice_container_path = NodePath("dice")
-starting_hp = 0
 
 [node name="phys_dice" parent="." instance=ExtResource( 2 )]
 contacts_reported = 3

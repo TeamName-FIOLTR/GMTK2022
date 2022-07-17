@@ -10,7 +10,13 @@ var hp : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	hp = starting_hp
+	Globals.enemy_count += 1
+	
+	if Globals.enemy_count > Globals.MAX_ENEMY_COUNT:
+		queue_free()
+	
+	hp = starting_hp*Globals.score
+	
 	add_to_group("enemy")
 
 #called when we hit a target
@@ -23,6 +29,9 @@ func _process(delta):
 func die():
 	queue_free()
 
+func queue_free():
+	Globals.enemy_count -= 1
+	.queue_free()
 func take_damage(amount : int, src: Spatial)->void:
 	hp -= amount
 	if hp <= 0:

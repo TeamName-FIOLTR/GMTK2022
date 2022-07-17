@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/scripts/generics/dice_container.gd" type="Script" id=1]
 [ext_resource path="res://assets/scripts/enemies/Follower.gd" type="Script" id=2]
 [ext_resource path="res://scenes/dice/Physics d6.tscn" type="PackedScene" id=3]
-[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://assets/flat_art/Rolling(uncomftable)/0003.png" type="Texture" id=4]
 [ext_resource path="res://scenes/ray_cast_lazer.tscn" type="PackedScene" id=5]
 
 [sub_resource type="PhysicsMaterial" id=1]
@@ -12,7 +12,6 @@ friction = 0.0
 [node name="Walker" type="Spatial"]
 script = ExtResource( 2 )
 dice_container_path = NodePath("dice")
-starting_hp = 0
 gun_path = NodePath("art/flat_art/gun")
 
 [node name="dice" type="Node" parent="."]
@@ -38,7 +37,7 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03766, 0, -0.00485374 )
 
 [node name="Sprite3D" type="Sprite3D" parent="art/flat_art/face"]
-transform = Transform( -1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 0.0736389, 0, 0 )
+transform = Transform( -2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0.0736389, 0, -0.0561504 )
 texture = ExtResource( 4 )
 
 [node name="gun" parent="art/flat_art" instance=ExtResource( 5 )]

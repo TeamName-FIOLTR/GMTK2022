@@ -31,7 +31,7 @@ func _process(delta):
 func take_damage(amount : int, source : Spatial)->void:
 	if $phys_dice.rolled:
 		#unlock the roll EXPLOSIVLY
-		var collision_vec : Vector3 = ($phys_dice.global_transform.origin - source.global_transform.origin).normalized()*gun.force*10
+		var collision_vec : Vector3 = ($phys_dice.global_transform.origin - source.global_transform.origin).normalized()*source.lazer.force*10
 		$phys_dice.linear_velocity = collision_vec
 		print("EXPLOSION VELOCITY")
 		print($phys_dice.linear_velocity)

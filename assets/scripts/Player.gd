@@ -166,7 +166,7 @@ func _i_is_player():
 
 
 func _on_survival_timer_timeout():
-	print("DIFFICULTY UP!")
+	Globals.score += 1
 	$ObjectSpawner/enemy_spawn_timer.wait_time -= 0.5
 	if $ObjectSpawner/enemy_spawn_timer.wait_time < 0.3:
 		$ObjectSpawner/enemy_spawn_timer.wait_time = 0.3
