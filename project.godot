@@ -217,6 +217,7 @@ Globals="*res://scenes/globals/Globals.tscn"
 [global]
 
 damp=false
+android=false
 
 [input]
 
