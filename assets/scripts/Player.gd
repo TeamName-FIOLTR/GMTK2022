@@ -113,9 +113,16 @@ func _notification(what):
 		NOTIFICATION_WM_MOUSE_EXIT:
 			mouse_in = false
 
+func update_movement_vector()->void:
+	movement_vector = Input.get_vector("move_left","move_right","move_down","move_up")
+
+#make sure that after the game unpauses our movement vector is still correct
+func on_unpause():
+	update_movement_vector()
+
 func _input(event):
 	if (event is InputEventKey or event is InputEventJoypadMotion):
-		movement_vector = Input.get_vector("move_left","move_right","move_down","move_up")
+		update_movement_vector()
 
 func hit_target(target):
 	target = target.get_parent()
@@ -138,7 +145,7 @@ func ask_power(power : DicePower,damage_up : int)->void:
 		power.get_parent().remove_child(power)
 	$"Power Title".dice_power = power
 	$"Power Title".damage_increase = damage_up
-	$"Power Title".visible = true
+	$"Power Title".display()
 
 func check_death():
 	if health <= 0:

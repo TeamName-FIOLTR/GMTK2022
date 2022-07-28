@@ -22,7 +22,7 @@
 [node name="player" type="Spatial"]
 script = ExtResource( 4 )
 
-[node name="Player" type="KinematicBody" parent="."]
+[node name="Player" type="KinematicBody" parent="." groups=["unpause_recivers"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 1 )
@@ -55,6 +55,7 @@ player_controled = true
 length = 100.0
 
 [node name="Power Title" parent="Player" instance=ExtResource( 5 )]
+pause_mode = 2
 visible = false
 
 [node name="DebugDicePower" type="Node" parent="Player"]

@@ -11,6 +11,21 @@ func set_score(val : int)->void:
 	get_tree().call_group("Player Status Recievers", "recieve_player_score", score)
 #	$"Gameplay UI/score/Label".text = "Score: " + str(score)
 
+#pings the unpause group,placed in Global namespace so all nodes
+#can utilize this function if needed
+func alert_unpause():
+	get_tree().call_group("unpause_recivers","on_unpause")
+func play_music_when_paused(play : bool = true)->void:
+	if play:
+		$"Big Music".pause_mode = Node.PAUSE_MODE_PROCESS
+		$base.pause_mode = Node.PAUSE_MODE_PROCESS
+		$cymbalss.pause_mode = Node.PAUSE_MODE_PROCESS
+	else:
+		print("NO MUSIC!")
+		$"Big Music".pause_mode = Node.PAUSE_MODE_STOP
+		$base.pause_mode = Node.PAUSE_MODE_STOP
+		$cymbalss.pause_mode = Node.PAUSE_MODE_STOP
+
 func set_smooth_enemy_count(n_count):
 	smooth_enemy_count = n_count
 	if not is_inside_tree(): yield(self, "ready")

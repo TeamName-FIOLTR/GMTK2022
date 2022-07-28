@@ -20,7 +20,10 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("pause"):
 		visible = !visible
+		Globals.play_music_when_paused(!visible)
 		get_tree().paused = visible
+		if (!visible):
+			Globals.alert_unpause()
 		$main/VBoxContainer/CONTINUE.grab_focus()
 		pass
 	if event.is_action_pressed("ui_cancel") and visible:

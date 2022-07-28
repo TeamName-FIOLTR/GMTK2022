@@ -31,12 +31,21 @@ func display_dice_power(dp : DicePower)->void:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+func display():
+	visible = true
+	Globals.play_music_when_paused()
+	get_tree().paused = true
+	
+func hide():
+	visible = false
+	get_tree().paused = false
+	Globals.alert_unpause()
 
 func _input(event):
 	if visible:
 		if Input.is_action_just_pressed("fire"):
 			get_parent().take_power(dice_power,damage_increase)
-			visible = false
+			hide()
 		if Input.is_action_just_pressed("aim"):
 			dice_power.queue_free()
-			visible = false
+			hide()
